@@ -15,6 +15,7 @@
 		6C51DC3527B6177000E54296 /* TipJarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DC3427B6177000E54296 /* TipJarUITests.swift */; };
 		6C51DC3727B6177000E54296 /* TipJarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DC3627B6177000E54296 /* TipJarUITestsLaunchTests.swift */; };
 		6C51DC4427B617DD00E54296 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DC4327B617DD00E54296 /* README.md */; };
+		D02572BF28187149004F1C1B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02572BE28187149004F1C1B /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		6C51DC3427B6177000E54296 /* TipJarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarUITests.swift; sourceTree = "<group>"; };
 		6C51DC3627B6177000E54296 /* TipJarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6C51DC4327B617DD00E54296 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D02572BE28187149004F1C1B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		6C51DC1827B6176F00E54296 /* TipJar */ = {
 			isa = PBXGroup;
 			children = (
+				D02572BD28187135004F1C1B /* Views */,
 				6C51DC1927B6176F00E54296 /* TipJarApp.swift */,
 				6C51DC1B27B6176F00E54296 /* ContentView.swift */,
 				6C51DC1D27B6177000E54296 /* Assets.xcassets */,
@@ -128,6 +131,14 @@
 				6C51DC3627B6177000E54296 /* TipJarUITestsLaunchTests.swift */,
 			);
 			path = TipJarUITests;
+			sourceTree = "<group>";
+		};
+		D02572BD28187135004F1C1B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D02572BE28187149004F1C1B /* HeaderView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C51DC1C27B6176F00E54296 /* ContentView.swift in Sources */,
+				D02572BF28187149004F1C1B /* HeaderView.swift in Sources */,
 				6C51DC1A27B6176F00E54296 /* TipJarApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
