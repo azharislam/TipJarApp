@@ -21,6 +21,8 @@
 		D02572D12818BFEB004F1C1B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D02572CE2818BFEB004F1C1B /* Roboto-Medium.ttf */; };
 		D02572D22818BFEB004F1C1B /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D02572CF2818BFEB004F1C1B /* Roboto-Bold.ttf */; };
 		D02572D52818C0B7004F1C1B /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02572D42818C0B7004F1C1B /* Fonts.swift */; };
+		D02572D92818CBC6004F1C1B /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02572D82818CBC6004F1C1B /* Images.swift */; };
+		D02572DB2818D024004F1C1B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02572DA2818D024004F1C1B /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		D02572CF2818BFEB004F1C1B /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		D02572D32818BFF6004F1C1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D02572D42818C0B7004F1C1B /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		D02572D82818CBC6004F1C1B /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		D02572DA2818D024004F1C1B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,8 @@
 			children = (
 				D02572CC2818BFDF004F1C1B /* Fonts */,
 				D02572D42818C0B7004F1C1B /* Fonts.swift */,
+				D02572D82818CBC6004F1C1B /* Images.swift */,
+				D02572DA2818D024004F1C1B /* Colors.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -308,6 +314,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D02572D92818CBC6004F1C1B /* Images.swift in Sources */,
+				D02572DB2818D024004F1C1B /* Colors.swift in Sources */,
 				6C51DC1C27B6176F00E54296 /* ContentView.swift in Sources */,
 				D02572D52818C0B7004F1C1B /* Fonts.swift in Sources */,
 				D02572BF28187149004F1C1B /* HeaderView.swift in Sources */,

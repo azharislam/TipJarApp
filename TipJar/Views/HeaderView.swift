@@ -11,12 +11,12 @@ struct HeaderView: View {
     var body: some View {
         HStack {
             Spacer()
-            Image("tipJarLogo")
+            Image.logo
                 .resizable()
                 .frame(width: 95, height: 30)
                 .padding(.leading, 50)
             Spacer()
-            Image("history")
+            Image.history
                 .resizable()
                 .frame(width: 25, height: 25)
                 .padding(.trailing, 15)
