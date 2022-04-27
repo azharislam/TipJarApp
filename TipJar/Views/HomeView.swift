@@ -35,14 +35,15 @@ struct HomeView: View {
                         FormSectionView(type: .peopleCount)
                         FormSectionView(type: .tip)
                         FormSectionView(type: .totalTip)
-                        FormSectionView(type: .perPerson)
+                        Spacer()
                         FormSectionView(type: .checkbox)
                         FormSectionView(type: .saveButton)
                     }
                     .padding(.leading, 30)
                     .padding(.trailing, 30)
                 }
-                .padding(.top, -50)
+                .padding(.top, 15)
+                .padding(.bottom, 20)
             }
             .frame(maxWidth: .infinity,
                    maxHeight: .infinity)

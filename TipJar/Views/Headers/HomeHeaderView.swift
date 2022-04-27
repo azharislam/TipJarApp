@@ -28,16 +28,15 @@ struct HomeHeaderView: View {
             Image.logo
                 .resizable()
                 .frame(width: 114, height: 30)
-                .padding(.leading, 50)
+                .padding(.leading, 60)
             Spacer()
-            
             Button(action: {
                 handler(.savedPayments)
             }) {
                 Image.history
                     .resizable()
                     .frame(width: 25, height: 25)
-                    .padding(.trailing, 15)
+                    .padding(.trailing, 25)
             }
         }
     }

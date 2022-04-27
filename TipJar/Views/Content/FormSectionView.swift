@@ -14,7 +14,6 @@ struct FormSectionView: View {
         case peopleCount
         case tip
         case totalTip
-        case perPerson
         case checkbox
         case saveButton
     }
@@ -36,8 +35,6 @@ struct FormSectionView: View {
             tipField
         case .totalTip:
             totalTip
-        case .perPerson:
-            perPerson
         case .checkbox:
             checkbox
         case .saveButton:
@@ -49,11 +46,10 @@ struct FormSectionView: View {
         VStack(alignment: .leading) {
             Text("Enter amount")
                 .font(Font.Roboto.medium(size: 16))
-                .padding(.bottom)
             TextField("100.00", text: $textField)
                 .font(Font.Roboto.medium(size: 42))
                 .multilineTextAlignment(.center)
-                .frame(width: .infinity, height: 80)
+                .frame(height: 80)
                 .overlay(RoundedRectangle(cornerRadius: 12)
                     .stroke(Color.borderGray, lineWidth: 0.5)
                     .shadow(color: Color.black, radius: 10, x: 2, y: 2))
@@ -106,12 +102,10 @@ struct FormSectionView: View {
         VStack(alignment: .leading) {
             Text("% TIP")
                 .font(Font.Roboto.medium(size: 16))
-                .padding(.bottom)
             TextField("10", text: $textField)
                 .font(Font.Roboto.medium(size: 42))
                 .multilineTextAlignment(.center)
-                .padding()
-                .frame(width: .infinity, height: 80)
+                .frame(height: 80)
                 .overlay(RoundedRectangle(cornerRadius: 12)
                     .stroke(Color.borderGray, lineWidth: 0.5)
                     .shadow(color: Color.black, radius: 10, x: 2, y: 2))
@@ -124,22 +118,23 @@ struct FormSectionView: View {
     }
     
     private var totalTip: some View {
-        HStack {
-            Text("Total Tip")
-                .font(Font.Roboto.medium(size: 16))
-            Spacer()
-            Text("$10.00")
-                .font(Font.Roboto.medium(size: 16))
-        }
-    }
-    
-    private var perPerson: some View {
-        HStack {
-            Text("Per Person")
-                .font(Font.Roboto.medium(size: 24))
-            Spacer()
-            Text("$10.00")
-                .font(Font.Roboto.medium(size: 24))
+        VStack(spacing: 16) {
+            HStack {
+                Text("Total Tip")
+                    .font(Font.Roboto.medium(size: 16))
+                Spacer()
+                Text("$10.00")
+                    .font(Font.Roboto.medium(size: 16))
+            }
+            
+            HStack {
+                Text("Per Person")
+                    .font(Font.Roboto.medium(size: 24))
+                Spacer()
+                Text("$10.00")
+                    .font(Font.Roboto.medium(size: 24))
+            }
+            
         }
     }
     
@@ -184,6 +179,6 @@ struct FormSectionView: View {
 
 struct AmountFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        FormSectionView(type: .amount)
+        FormSectionView(type: .totalTip)
     }
 }
