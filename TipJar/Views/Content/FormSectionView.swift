@@ -66,7 +66,9 @@ struct FormSectionView: View {
             Text("How many people?")
                 .font(Font.Roboto.medium(size: 16))
             HStack {
-                Button(action: {}) {
+                Button(action: {
+                    viewModel.peopleCount += 1
+                }) {
                     Image.plus
                 }
                 .frame(width: 71, height: 71)
@@ -79,12 +81,16 @@ struct FormSectionView: View {
                 
                 Spacer()
                 
-                Text("1")
+                Text("\(viewModel.peopleCount)")
                     .font(Font.Roboto.medium(size: 42))
                 
                 Spacer()
                 
-                Button(action: {}) {
+                Button(action: {
+                    if viewModel.peopleCountDecreased {
+                        viewModel.peopleCount -= 1
+                    }
+                }) {
                     Image.minus
                 }
                 .frame(width: 71, height: 71)
@@ -179,6 +185,6 @@ struct FormSectionView: View {
 
 struct AmountFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        FormSectionView(type: .amount)
+        FormSectionView(type: .peopleCount)
     }
 }
