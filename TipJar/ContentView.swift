@@ -9,12 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
+        VStack(spacing: 10) {
             HeaderView()
             
             VStack {
-                AmountFieldView(type: .amount, placeHolder: "100.00")
-                AmountFieldView(type: .tip, placeHolder: "10")
+                FormSectionView(type: .amount, placeHolder: "100.00")
+                FormSectionView(type: .peopleCount)
+                FormSectionView(type: .tip, placeHolder: "10")
+                FormSectionView(type: .totalTip)
+                FormSectionView(type: .perPerson)
             }
         }
     }

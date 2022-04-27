@@ -7,23 +7,27 @@
 
 import SwiftUI
 
-struct AmountFieldView: View {
+struct FormSectionView: View {
     
-    enum FieldType {
+    enum SectionType {
         case amount
         case peopleCount
         case tip
+        case totalTip
+        case perPerson
+        case checkbox
+        case saveButton
     }
     
-    let type: FieldType
+    let type: SectionType
     var placeHolder: String?
     @State var textField: String = ""
     
     var body: some View {
-        fieldSection
+        formSection
     }
     
-    @ViewBuilder private var fieldSection: some View {
+    @ViewBuilder private var formSection: some View {
         switch type {
         case .amount:
             amountField
@@ -31,6 +35,14 @@ struct AmountFieldView: View {
             peopleCount
         case .tip:
             tipField
+        case .totalTip:
+            totalTip
+        case .perPerson:
+            perPerson
+        case .checkbox:
+            checkbox
+        case .saveButton:
+            saveButton
         }
     }
     
@@ -46,7 +58,7 @@ struct AmountFieldView: View {
                     .padding()
                     .frame(width: 330, height: 80)
                     .overlay(RoundedRectangle(cornerRadius: 12)
-                        .stroke(Color.gray, lineWidth: 0.5)
+                        .stroke(Color.borderGray, lineWidth: 0.5)
                         .shadow(color: Color.black, radius: 10, x: 2, y: 2))
                     .overlay(alignment: .leading) {
                         Text("$")
@@ -61,8 +73,39 @@ struct AmountFieldView: View {
         VStack(alignment: .leading) {
             Text("How many people?")
                 .font(Font.Roboto.medium(size: 16))
-                .padding(.bottom)
-            // Put number of people section inside here
+                .padding(.leading, 30)
+            HStack {
+                Button(action: {}) {
+                    Image.plus
+                }
+                .frame(width: 71, height: 71)
+                .background(.clear)
+                .clipShape(Circle())
+                .overlay(
+                    Circle()
+                        .stroke(Color.countGrayBorder, lineWidth: 1)
+                )
+                .padding(.leading, 30)
+                
+                Spacer()
+                
+                Text("1")
+                    .font(Font.Roboto.medium(size: 42))
+                
+                Spacer()
+                
+                Button(action: {}) {
+                    Image.minus
+                }
+                .frame(width: 71, height: 71)
+                .background(.clear)
+                .clipShape(Circle())
+                .overlay(
+                    Circle()
+                        .stroke(Color.countGrayBorder, lineWidth: 1)
+                )
+                .padding(.trailing, 30)
+            }
         }
     }
     
@@ -78,7 +121,7 @@ struct AmountFieldView: View {
                     .padding()
                     .frame(width: 330, height: 80)
                     .overlay(RoundedRectangle(cornerRadius: 12)
-                        .stroke(Color.gray, lineWidth: 0.5)
+                        .stroke(Color.borderGray, lineWidth: 0.5)
                         .shadow(color: Color.black, radius: 10, x: 2, y: 2))
                     .overlay(alignment: .trailing) {
                         Text("%")
@@ -88,10 +131,46 @@ struct AmountFieldView: View {
             }
         }
     }
+    
+    private var totalTip: some View {
+        HStack {
+            Text("Total Tip")
+                .font(Font.Roboto.medium(size: 16))
+                .padding(.leading, 30)
+            Spacer()
+            Text("$10.00")
+                .font(Font.Roboto.medium(size: 16))
+                .padding(.trailing, 30)
+        }
+    }
+    
+    private var perPerson: some View {
+        HStack {
+            Text("Per Person")
+                .font(Font.Roboto.medium(size: 24))
+                .padding(.leading, 30)
+            Spacer()
+            Text("$10.00")
+                .font(Font.Roboto.medium(size: 24))
+                .padding(.trailing, 30)
+        }
+    }
+    
+    private var checkbox: some View {
+        HStack {
+            
+        }
+    }
+    
+    private var saveButton: some View {
+        HStack {
+            
+        }
+    }
 }
 
 struct AmountFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        AmountFieldView(type: .amount, placeHolder: "100.00")
+        FormSectionView(type: .perPerson)
     }
 }
