@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct FormSectionView: View {
-    
+
+    @StateObject private var viewModel = FormSectionViewModel()
+
     enum SectionType {
         case amount
         case peopleCount
         case tip
-        case totalTip
+        case summary
         case checkbox
         case saveButton
     }
@@ -33,8 +35,8 @@ struct FormSectionView: View {
             peopleCount
         case .tip:
             tipField
-        case .totalTip:
-            totalTip
+        case .summary:
+            summarySection
         case .checkbox:
             checkbox
         case .saveButton:
@@ -46,18 +48,16 @@ struct FormSectionView: View {
         VStack(alignment: .leading) {
             Text("Enter amount")
                 .font(Font.Roboto.medium(size: 16))
-            TextField("100.00", text: $textField)
-                .font(Font.Roboto.medium(size: 42))
-                .multilineTextAlignment(.center)
-                .frame(height: 80)
-                .overlay(RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.borderGray, lineWidth: 0.5)
-                    .shadow(color: Color.black, radius: 10, x: 2, y: 2))
-                .overlay(alignment: .leading) {
-                    Text("$")
-                        .font(Font.Roboto.medium(size: 24))
-                        .padding(.leading, 20)
-                }
+            CustomTextfieldView {
+                TextField("100.00", text: $textField)
+                    .keyboardType(.decimalPad)
+                    .frame(height: 80)
+                    .overlay(alignment: .leading) {
+                        Text("$")
+                            .font(Font.Roboto.medium(size: 24))
+                            .padding(.leading, 20)
+                    }
+            }
         }
     }
     
@@ -102,25 +102,22 @@ struct FormSectionView: View {
         VStack(alignment: .leading) {
             Text("% TIP")
                 .font(Font.Roboto.medium(size: 16))
-            TextField("10", text: $textField)
-                .font(Font.Roboto.medium(size: 42))
-                .multilineTextAlignment(.center)
-                .frame(height: 80)
-                .submitLabel(.done)
-                .overlay(RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.borderGray, lineWidth: 0.5)
-                    .shadow(color: Color.black, radius: 10, x: 2, y: 2))
-                .overlay(alignment: .trailing) {
-                    Text("%")
-                        .font(Font.Roboto.medium(size: 24))
-                        .padding(.trailing, 10)
-                }
+            CustomTextfieldView {
+                TextField("100.00", text: $textField)
+                    .keyboardType(.numberPad)
+                    .frame(height: 80)
+                    .overlay(alignment: .trailing) {
+                        Text("%")
+                            .font(Font.Roboto.medium(size: 24))
+                            .padding(.trailing, 10)
+                    }
+            }
         }
         
 
     }
     
-    private var totalTip: some View {
+    private var summarySection: some View {
         VStack(spacing: 16) {
             HStack {
                 Text("Total Tip")
@@ -134,7 +131,7 @@ struct FormSectionView: View {
                 Text("Per Person")
                     .font(Font.Roboto.medium(size: 24))
                 Spacer()
-                Text("$10.00")
+                Text(textField)
                     .font(Font.Roboto.medium(size: 24))
             }
             
@@ -182,6 +179,6 @@ struct FormSectionView: View {
 
 struct AmountFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        FormSectionView(type: .totalTip)
+        FormSectionView(type: .amount)
     }
 }

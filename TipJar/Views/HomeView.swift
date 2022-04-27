@@ -34,7 +34,7 @@ struct HomeView: View {
                         FormSectionView(type: .amount)
                         FormSectionView(type: .peopleCount)
                         FormSectionView(type: .tip)
-                        FormSectionView(type: .totalTip)
+                        FormSectionView(type: .summary)
                         Spacer()
                         FormSectionView(type: .checkbox)
                         FormSectionView(type: .saveButton)
