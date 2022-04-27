@@ -16,6 +16,7 @@ extension Color {
     static let countGrayBorder = Color("CountBorderGray")
     static let gradientBrown = Color("GradientBrown")
     static let gradientOrange = Color("GradientOrange")
+    static let navigationGray = Color("NavigationGray")
 
 }
 

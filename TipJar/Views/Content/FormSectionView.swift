@@ -20,7 +20,6 @@ struct FormSectionView: View {
     }
     
     let type: SectionType
-    var placeHolder: String?
     @State var textField: String = ""
     
     var body: some View {
@@ -51,21 +50,18 @@ struct FormSectionView: View {
             Text("Enter amount")
                 .font(Font.Roboto.medium(size: 16))
                 .padding(.bottom)
-            if let placeHolder = placeHolder {
-                TextField(placeHolder, text: $textField)
-                    .font(Font.Roboto.medium(size: 42))
-                    .multilineTextAlignment(.center)
-                    .padding()
-                    .frame(width: 330, height: 80)
-                    .overlay(RoundedRectangle(cornerRadius: 12)
-                        .stroke(Color.borderGray, lineWidth: 0.5)
-                        .shadow(color: Color.black, radius: 10, x: 2, y: 2))
-                    .overlay(alignment: .leading) {
-                        Text("$")
-                            .font(Font.Roboto.medium(size: 24))
-                            .padding(.leading, 20)
-                    }
-            }
+            TextField("100.00", text: $textField)
+                .font(Font.Roboto.medium(size: 42))
+                .multilineTextAlignment(.center)
+                .frame(width: .infinity, height: 80)
+                .overlay(RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.borderGray, lineWidth: 0.5)
+                    .shadow(color: Color.black, radius: 10, x: 2, y: 2))
+                .overlay(alignment: .leading) {
+                    Text("$")
+                        .font(Font.Roboto.medium(size: 24))
+                        .padding(.leading, 20)
+                }
         }
     }
     
@@ -73,7 +69,6 @@ struct FormSectionView: View {
         VStack(alignment: .leading) {
             Text("How many people?")
                 .font(Font.Roboto.medium(size: 16))
-                .padding(.leading, 30)
             HStack {
                 Button(action: {}) {
                     Image.plus
@@ -85,7 +80,6 @@ struct FormSectionView: View {
                     Circle()
                         .stroke(Color.countGrayBorder, lineWidth: 1)
                 )
-                .padding(.leading, 30)
                 
                 Spacer()
                 
@@ -104,7 +98,6 @@ struct FormSectionView: View {
                     Circle()
                         .stroke(Color.countGrayBorder, lineWidth: 1)
                 )
-                .padding(.trailing, 30)
             }
         }
     }
@@ -114,21 +107,19 @@ struct FormSectionView: View {
             Text("% TIP")
                 .font(Font.Roboto.medium(size: 16))
                 .padding(.bottom)
-            if let placeHolder = placeHolder {
-                TextField(placeHolder, text: $textField)
-                    .font(Font.Roboto.medium(size: 42))
-                    .multilineTextAlignment(.center)
-                    .padding()
-                    .frame(width: 330, height: 80)
-                    .overlay(RoundedRectangle(cornerRadius: 12)
-                        .stroke(Color.borderGray, lineWidth: 0.5)
-                        .shadow(color: Color.black, radius: 10, x: 2, y: 2))
-                    .overlay(alignment: .trailing) {
-                        Text("%")
-                            .font(Font.Roboto.medium(size: 24))
-                            .padding(.trailing, 10)
-                    }
-            }
+            TextField("10", text: $textField)
+                .font(Font.Roboto.medium(size: 42))
+                .multilineTextAlignment(.center)
+                .padding()
+                .frame(width: .infinity, height: 80)
+                .overlay(RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.borderGray, lineWidth: 0.5)
+                    .shadow(color: Color.black, radius: 10, x: 2, y: 2))
+                .overlay(alignment: .trailing) {
+                    Text("%")
+                        .font(Font.Roboto.medium(size: 24))
+                        .padding(.trailing, 10)
+                }
         }
     }
     
@@ -136,11 +127,9 @@ struct FormSectionView: View {
         HStack {
             Text("Total Tip")
                 .font(Font.Roboto.medium(size: 16))
-                .padding(.leading, 30)
             Spacer()
             Text("$10.00")
                 .font(Font.Roboto.medium(size: 16))
-                .padding(.trailing, 30)
         }
     }
     
@@ -148,29 +137,53 @@ struct FormSectionView: View {
         HStack {
             Text("Per Person")
                 .font(Font.Roboto.medium(size: 24))
-                .padding(.leading, 30)
             Spacer()
             Text("$10.00")
                 .font(Font.Roboto.medium(size: 24))
-                .padding(.trailing, 30)
         }
     }
     
     private var checkbox: some View {
         HStack {
+            Button(action: {}) {
+                Image.checkSelected
+            }
+            .frame(width: 31, height: 31)
+            .background(.clear)
+            .cornerRadius(7)
+            .overlay(
+                RoundedRectangle(cornerRadius: 7)
+                    .stroke(Color.checkboxOrange, lineWidth: 1)
+            )
+            Text("Take a photo of receipt")
+                .font(Font.Roboto.medium(size: 16))
+                .padding(.leading, 5)
             
+            Spacer()
         }
     }
     
     private var saveButton: some View {
-        HStack {
-            
+        VStack {
+            Button(action: {}) {
+                Text("Save payment")
+                    .font(Font.Roboto.bold(size: 16))
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                    .foregroundColor(.white)
+                    .background(Color.gradientOrange)
+                    .cornerRadius(12)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(LinearGradient(gradient: Gradient(colors: [.white.opacity(0.1936), .black.opacity(0.198)]), startPoint: .top, endPoint: .bottom), lineWidth: 1)
+                    )
+            }
         }
     }
 }
 
 struct AmountFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        FormSectionView(type: .perPerson)
+        FormSectionView(type: .amount)
     }
 }
