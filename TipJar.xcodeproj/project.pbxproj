@@ -17,6 +17,10 @@
 		6C51DC4427B617DD00E54296 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DC4327B617DD00E54296 /* README.md */; };
 		D02572BF28187149004F1C1B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02572BE28187149004F1C1B /* HeaderView.swift */; };
 		D02572C128188556004F1C1B /* AmountFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02572C028188556004F1C1B /* AmountFieldView.swift */; };
+		D02572D02818BFEB004F1C1B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D02572CD2818BFEB004F1C1B /* Roboto-Regular.ttf */; };
+		D02572D12818BFEB004F1C1B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D02572CE2818BFEB004F1C1B /* Roboto-Medium.ttf */; };
+		D02572D22818BFEB004F1C1B /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D02572CF2818BFEB004F1C1B /* Roboto-Bold.ttf */; };
+		D02572D52818C0B7004F1C1B /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02572D42818C0B7004F1C1B /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,11 @@
 		6C51DC4327B617DD00E54296 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D02572BE28187149004F1C1B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		D02572C028188556004F1C1B /* AmountFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFieldView.swift; sourceTree = "<group>"; };
+		D02572CD2818BFEB004F1C1B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		D02572CE2818BFEB004F1C1B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		D02572CF2818BFEB004F1C1B /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		D02572D32818BFF6004F1C1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D02572D42818C0B7004F1C1B /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +110,9 @@
 		6C51DC1827B6176F00E54296 /* TipJar */ = {
 			isa = PBXGroup;
 			children = (
+				D02572D32818BFF6004F1C1B /* Info.plist */,
 				D02572BD28187135004F1C1B /* Views */,
+				D02572CB2818BFD1004F1C1B /* Resources */,
 				6C51DC1927B6176F00E54296 /* TipJarApp.swift */,
 				6C51DC1B27B6176F00E54296 /* ContentView.swift */,
 				6C51DC1D27B6177000E54296 /* Assets.xcassets */,
@@ -142,6 +153,25 @@
 				D02572C028188556004F1C1B /* AmountFieldView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D02572CB2818BFD1004F1C1B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D02572CC2818BFDF004F1C1B /* Fonts */,
+				D02572D42818C0B7004F1C1B /* Fonts.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D02572CC2818BFDF004F1C1B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D02572CF2818BFEB004F1C1B /* Roboto-Bold.ttf */,
+				D02572CE2818BFEB004F1C1B /* Roboto-Medium.ttf */,
+				D02572CD2818BFEB004F1C1B /* Roboto-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,8 +278,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D02572D12818BFEB004F1C1B /* Roboto-Medium.ttf in Resources */,
 				6C51DC4427B617DD00E54296 /* README.md in Resources */,
+				D02572D22818BFEB004F1C1B /* Roboto-Bold.ttf in Resources */,
 				6C51DC2127B6177000E54296 /* Preview Assets.xcassets in Resources */,
+				D02572D02818BFEB004F1C1B /* Roboto-Regular.ttf in Resources */,
 				6C51DC1E27B6177000E54296 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C51DC1C27B6176F00E54296 /* ContentView.swift in Sources */,
+				D02572D52818C0B7004F1C1B /* Fonts.swift in Sources */,
 				D02572BF28187149004F1C1B /* HeaderView.swift in Sources */,
 				6C51DC1A27B6176F00E54296 /* TipJarApp.swift in Sources */,
 				D02572C128188556004F1C1B /* AmountFieldView.swift in Sources */,
@@ -442,6 +476,7 @@
 				DEVELOPMENT_TEAM = 299HJ3G3BP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TipJar/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -471,6 +506,7 @@
 				DEVELOPMENT_TEAM = 299HJ3G3BP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TipJar/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

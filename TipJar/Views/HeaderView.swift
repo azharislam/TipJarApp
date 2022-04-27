@@ -14,11 +14,12 @@ struct HeaderView: View {
             Image("tipJarLogo")
                 .resizable()
                 .frame(width: 95, height: 30)
+                .padding(.leading, 50)
             Spacer()
             Image("history")
                 .resizable()
                 .frame(width: 25, height: 25)
-                .padding(.trailing, 5)
+                .padding(.trailing, 15)
         }
     }
 }

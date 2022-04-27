@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack {
+        VStack {
             HeaderView()
             
             VStack {
-                
+                AmountFieldView(type: .amount, placeHolder: "100.00")
+                AmountFieldView(type: .tip, placeHolder: "10")
             }
         }
     }
