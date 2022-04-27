@@ -41,6 +41,8 @@ struct HomeView: View {
                     }
                     .padding(.leading, 30)
                     .padding(.trailing, 30)
+                    .adaptsToKeyboard()
+
                 }
                 .padding(.top, 15)
                 .padding(.bottom, 20)

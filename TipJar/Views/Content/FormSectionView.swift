@@ -106,6 +106,7 @@ struct FormSectionView: View {
                 .font(Font.Roboto.medium(size: 42))
                 .multilineTextAlignment(.center)
                 .frame(height: 80)
+                .submitLabel(.done)
                 .overlay(RoundedRectangle(cornerRadius: 12)
                     .stroke(Color.borderGray, lineWidth: 0.5)
                     .shadow(color: Color.black, radius: 10, x: 2, y: 2))
@@ -115,6 +116,8 @@ struct FormSectionView: View {
                         .padding(.trailing, 10)
                 }
         }
+        
+
     }
     
     private var totalTip: some View {
