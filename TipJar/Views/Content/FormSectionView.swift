@@ -109,9 +109,13 @@ struct FormSectionView: View {
             Text("% TIP")
                 .font(Font.Roboto.medium(size: 16))
             CustomTextfieldView {
-                TextField("100.00", text: $textField)
+                TextField("", text: $textField)
                     .keyboardType(.numberPad)
                     .frame(height: 80)
+                    .overlay(alignment: .center, content: {
+                        Text("10")
+                            .font(Font.Roboto.medium(size: 42))
+                    })
                     .overlay(alignment: .trailing) {
                         Text("%")
                             .font(Font.Roboto.medium(size: 24))
@@ -185,6 +189,6 @@ struct FormSectionView: View {
 
 struct AmountFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        FormSectionView(type: .peopleCount)
+        FormSectionView(type: .tip)
     }
 }

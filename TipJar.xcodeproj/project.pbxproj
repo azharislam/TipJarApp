@@ -28,6 +28,7 @@
 		D0647CF52818EBCA009D2BD0 /* PaymentsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0647CF42818EBCA009D2BD0 /* PaymentsListView.swift */; };
 		D0647CF82818F07D009D2BD0 /* PaymentsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0647CF72818F07D009D2BD0 /* PaymentsHeaderView.swift */; };
 		D0647CFB281905F7009D2BD0 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0647CFA281905F7009D2BD0 /* Keyboard.swift */; };
+		D07560092819FCF700DC0037 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07560082819FCF700DC0037 /* Numbers.swift */; };
 		D0E6FFA92819D8FD0071951D /* CustomTextfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6FFA82819D8FD0071951D /* CustomTextfieldView.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		D0647CF42818EBCA009D2BD0 /* PaymentsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsListView.swift; sourceTree = "<group>"; };
 		D0647CF72818F07D009D2BD0 /* PaymentsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsHeaderView.swift; sourceTree = "<group>"; };
 		D0647CFA281905F7009D2BD0 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		D07560082819FCF700DC0037 /* Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
 		D0E6FFA82819D8FD0071951D /* CustomTextfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +192,7 @@
 				D02572D82818CBC6004F1C1B /* Images.swift */,
 				D02572DA2818D024004F1C1B /* Colors.swift */,
 				D0647CFA281905F7009D2BD0 /* Keyboard.swift */,
+				D07560082819FCF700DC0037 /* Numbers.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				6C51DC1C27B6176F00E54296 /* ContentView.swift in Sources */,
 				D02572D52818C0B7004F1C1B /* Fonts.swift in Sources */,
 				D02572BF28187149004F1C1B /* HomeHeaderView.swift in Sources */,
+				D07560092819FCF700DC0037 /* Numbers.swift in Sources */,
 				D0647CF32818E8EC009D2BD0 /* HomeView.swift in Sources */,
 				D0E6FFA92819D8FD0071951D /* CustomTextfieldView.swift in Sources */,
 				6C51DC1A27B6176F00E54296 /* TipJarApp.swift in Sources */,
