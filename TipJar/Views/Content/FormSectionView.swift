@@ -8,48 +8,63 @@
 import SwiftUI
 
 struct FormSectionView: View {
-
-    @StateObject private var viewModel = FormSectionViewModel()
-
-    enum SectionType {
-        case amount
-        case peopleCount
-        case tip
-        case summary
-        case checkbox
-        case saveButton
-    }
     
-    let type: SectionType
+    @StateObject private var viewModel = FormSectionViewModel()
+    @State private var showPaymentsView: Bool?
+    
     @State var textField: String = ""
     
     var body: some View {
-        formSection
-    }
-    
-    @ViewBuilder private var formSection: some View {
-        switch type {
-        case .amount:
-            amountField
-        case .peopleCount:
-            peopleCount
-        case .tip:
-            tipField
-        case .summary:
-            summarySection
-        case .checkbox:
-            checkbox
-        case .saveButton:
-            saveButton
+        
+        NavigationView {
+            ZStack(alignment: .bottom) {
+                NavigationLink(destination: PaymentsListView(),
+                               tag: true,
+                               selection: $showPaymentsView) {
+                    EmptyView()
+                }
+                
+                VStack(spacing: 15) {
+                    HomeHeaderView { action in
+                        switch action {
+                        case .savedPayments:
+                            showPaymentsView = true
+                        }
+                    }
+                    
+                    VStack(spacing: 32) {
+                        
+                        amountField
+                        peopleCount
+                        tipField
+                        summarySection
+                        Spacer()
+                        checkbox
+                        saveButton
+                        
+                    }
+                    .padding(.leading, 30)
+                    .padding(.trailing, 30)
+                    .adaptsToKeyboard()
+                    
+                }
+                .padding(.top, 15)
+                .padding(.bottom, 20)
+            }
+            .frame(maxWidth: .infinity,
+                   maxHeight: .infinity)
+            .navigationBarHidden(true)
         }
     }
     
+    
+    @ViewBuilder
     private var amountField: some View {
         VStack(alignment: .leading) {
             Text("Enter amount")
                 .font(Font.Roboto.medium(size: 16))
             CustomTextfieldView {
-                TextField("100.00", text: $textField)
+                TextField("100.00", text: $viewModel.enteredAmount)
                     .keyboardType(.decimalPad)
                     .frame(height: 80)
                     .overlay(alignment: .leading) {
@@ -61,6 +76,7 @@ struct FormSectionView: View {
         }
     }
     
+    @ViewBuilder
     private var peopleCount: some View {
         VStack(alignment: .leading) {
             Text("How many people?")
@@ -68,6 +84,7 @@ struct FormSectionView: View {
             HStack {
                 Button(action: {
                     viewModel.peopleCount += 1
+                    viewModel.calculateTip()
                 }) {
                     Image.plus
                 }
@@ -87,8 +104,9 @@ struct FormSectionView: View {
                 Spacer()
                 
                 Button(action: {
-                    if viewModel.peopleCountDecreased {
+                    if viewModel.moreThanOnePerson {
                         viewModel.peopleCount -= 1
+                        viewModel.calculateTip()
                     }
                 }) {
                     Image.minus
@@ -104,6 +122,7 @@ struct FormSectionView: View {
         }
     }
     
+    @ViewBuilder
     private var tipField: some View {
         VStack(alignment: .leading) {
             Text("% TIP")
@@ -124,16 +143,17 @@ struct FormSectionView: View {
             }
         }
         
-
+        
     }
     
+    @ViewBuilder
     private var summarySection: some View {
         VStack(spacing: 16) {
             HStack {
                 Text("Total Tip")
                     .font(Font.Roboto.medium(size: 16))
                 Spacer()
-                Text("$10.00")
+                Text(viewModel.totalTip, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                     .font(Font.Roboto.medium(size: 16))
             }
             
@@ -141,13 +161,14 @@ struct FormSectionView: View {
                 Text("Per Person")
                     .font(Font.Roboto.medium(size: 24))
                 Spacer()
-                Text(textField)
+                Text(viewModel.perPersonAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                     .font(Font.Roboto.medium(size: 24))
             }
             
         }
     }
     
+    @ViewBuilder
     private var checkbox: some View {
         HStack {
             Button(action: {}) {
@@ -168,6 +189,7 @@ struct FormSectionView: View {
         }
     }
     
+    @ViewBuilder
     private var saveButton: some View {
         VStack {
             Button(action: {}) {
@@ -189,6 +211,6 @@ struct FormSectionView: View {
 
 struct AmountFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        FormSectionView(type: .tip)
+        FormSectionView()
     }
 }
