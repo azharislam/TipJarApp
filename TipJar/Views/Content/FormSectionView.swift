@@ -11,8 +11,9 @@ struct FormSectionView: View {
     
     @StateObject private var viewModel = FormSectionViewModel()
     @State private var showPaymentsView: Bool?
-    
+
     @State var textField: String = ""
+    @State var newReceipt = Receipt(savedAmount: 0.0, savedTip: 0.0, savedImage: "")
     
     var body: some View {
         
@@ -71,6 +72,9 @@ struct FormSectionView: View {
                         Text("$")
                             .font(Font.Roboto.medium(size: 24))
                             .padding(.leading, 20)
+                    }
+                    .onChange(of: viewModel.enteredAmount) { newValue in
+                        viewModel.calculateTip()
                     }
             }
         }
@@ -192,7 +196,12 @@ struct FormSectionView: View {
     @ViewBuilder
     private var saveButton: some View {
         VStack {
-            Button(action: {}) {
+            Button(action: {
+                print("\(viewModel.isSaved.description)")
+                newReceipt.totalAmount = viewModel.amount
+                newReceipt.tipAmount = viewModel.totalTip
+                viewModel.addSavedPayment(receipt: newReceipt)
+            }) {
                 Text("Save payment")
                     .font(Font.Roboto.bold(size: 16))
                     .frame(maxWidth: .infinity)

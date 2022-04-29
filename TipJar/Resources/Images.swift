@@ -17,5 +17,6 @@ extension Image {
     static let minus = Image("minus")
     static let plus = Image("plus")
     static let logo = Image("tipJarLogo")
+    static let receipt = Image("receipt")
 }
 

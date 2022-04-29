@@ -10,6 +10,8 @@ import SwiftUI
 struct PaymentsListView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @ObservedObject private var viewModel = FormSectionViewModel()
+    
     
     var body: some View {
         ZStack {
@@ -20,9 +22,28 @@ struct PaymentsListView: View {
                         presentationMode.wrappedValue.dismiss()
                     }
                 }
-                
-                ScrollView {
-                    
+                if viewModel.receipts.isEmpty {
+                    ScrollView {
+                        VStack(alignment: .center) {
+                            Text("No Saved Payments")
+                                .font(Font.Roboto.bold(size: 24))
+                                .multilineTextAlignment(.center)
+                                .padding(.top, 250)
+                            Text("It seems you haven't saved any payments! \n When you do they will show up here.")
+                                .font(Font.Roboto.medium(size: 16))
+                                .multilineTextAlignment(.center)
+                                .padding()
+                        }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: [GridItem(.flexible())], spacing: 8) {
+                            ForEach(viewModel.receipts) { receipt in
+                                SavedPaymentView(receipt: receipt)
+                            }
+                        }
+                    }
                 }
             }
         }
