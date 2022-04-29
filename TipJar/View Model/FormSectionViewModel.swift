@@ -30,7 +30,7 @@ final class FormSectionViewModel: ObservableObject {
     
     init() {
        //when i call calculate tip inside here, the array resets to no elements
-        //when i put saveTip() here, i get my new PaymentList view to succesfully display elements but they have 0 set as its being called twice, once in init
+        //when i put saveTip() here, i get my new PaymentList view to succesfully display elements but all attributes are 0, as its being called twice, once in init
         // and once in the saveButton logic in the FormSectionView
     }
     
@@ -65,7 +65,7 @@ final class FormSectionViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func saveReceipt() {
+    func saveTip() {
         print("Saved amount is \(amount)")
         print("Saved tip is \(totalTip)")
         let receipt = Receipt(savedAmount: amount, savedTip: totalTip, savedImage: "")
