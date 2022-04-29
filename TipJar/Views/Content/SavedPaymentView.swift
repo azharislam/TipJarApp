@@ -23,7 +23,7 @@ struct SavedPaymentView: View {
                     .foregroundColor(Color.tipGray)
                     .padding(.leading, 20)
                 Spacer()
-                Image.receipt
+                Image(uiImage: ImageFileManager.getImage(payment.savedImage ?? "") ?? UIImage())
                     .padding(.bottom, 30)
             }
             .padding(.top, -30)

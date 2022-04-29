@@ -11,8 +11,6 @@ struct PaymentsListView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject private var viewModel = TipSectionViewModel()
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.savedDate, order: .reverse)])
-    var payments: FetchedResults<SavedPayments>
     
     var body: some View {
         ZStack {

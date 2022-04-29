@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct TipSectionView: View {
+struct TipSectionView: View, KeyboardReadable {
     
     @StateObject private var viewModel = TipSectionViewModel()
     
-    @State private var showPaymentsView: Bool?
     @State var textField: String = ""
     @State private var showCamera: Bool = false
     @State private var isCheckSelected: Bool = false
+    @State private var currency = "USD"
     
     var body: some View {
         
@@ -22,15 +22,14 @@ struct TipSectionView: View {
             ZStack(alignment: .bottom) {
                 NavigationLink(destination: PaymentsListView(),
                                tag: true,
-                               selection: $showPaymentsView) {
+                               selection: $viewModel.showPaymentsView) {
                     EmptyView()
                 }
-                
                 VStack(spacing: 15) {
                     HomeHeaderView { action in
                         switch action {
                         case .savedPayments:
-                            showPaymentsView = true
+                            viewModel.showPaymentsView = true
                         }
                     }
                     
@@ -48,10 +47,13 @@ struct TipSectionView: View {
                     .padding(.leading, 30)
                     .padding(.trailing, 30)
                     .adaptsToKeyboard()
-                    
+                    keyboardView
                 }
                 .padding(.top, 15)
                 .padding(.bottom, 20)
+                .onReceive(keyboardPublisher) { value in
+                    viewModel.isKeyboardEnabled = value
+                }
             }
             .frame(maxWidth: .infinity,
                    maxHeight: .infinity)
@@ -159,7 +161,7 @@ struct TipSectionView: View {
                 Text("Total Tip")
                     .font(Font.Roboto.medium(size: 16))
                 Spacer()
-                Text(viewModel.totalTip, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                Text(viewModel.totalTip, format: .currency(code: Locale.current.currencyCode ?? currency))
                     .font(Font.Roboto.medium(size: 16))
             }
             
@@ -167,7 +169,7 @@ struct TipSectionView: View {
                 Text("Per Person")
                     .font(Font.Roboto.medium(size: 24))
                 Spacer()
-                Text(viewModel.perPersonAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                Text(viewModel.perPersonAmount, format: .currency(code: Locale.current.currencyCode ?? currency))
                     .font(Font.Roboto.medium(size: 24))
             }
             
@@ -201,10 +203,11 @@ struct TipSectionView: View {
                     showCamera = true
                 } else {
                     guard !viewModel.enteredAmount.isEmpty else { return }
-                    viewModel.addPayment(totalAmount: viewModel.amount, totalTip: viewModel.totalTip, image: "")
+                    viewModel.savePayment()
                     print("Entered amount is \(viewModel.amount)")
                     print("Total tip is \(viewModel.totalTip)")
                     print("Count is \(viewModel.savedPayments.count)")
+                    viewModel.showPaymentsView = true
                     viewModel.enteredAmount = ""
                     // Add some nice graphic to show successful save
                 }
@@ -228,7 +231,19 @@ struct TipSectionView: View {
     private var cameraView: some View {
         CameraComponent(isShowing: $isCheckSelected, selectedImage: $viewModel.image)
     }
-
+    
+    @ViewBuilder
+    private var keyboardView: some View {
+        if viewModel.isKeyboardEnabled {
+            VStack(spacing: .zero) {
+                KeyboardComponent(actionTitle: "Done") {
+                    print("Keyboard is visible")
+                }
+            }
+            .animation(.default, value: viewModel.isKeyboardEnabled)
+        }
+    }
+    
 }
 
 struct AmountFieldView_Previews: PreviewProvider {

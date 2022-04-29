@@ -32,6 +32,8 @@
 		D0981411281B8D130003AC6C /* TipContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D098140F281B8D130003AC6C /* TipContainer.xcdatamodeld */; };
 		D0A916F0281B97C0005A92E9 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A916EF281B97C0005A92E9 /* DatabaseManager.swift */; };
 		D0A916F2281B9AAD005A92E9 /* TipSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A916F1281B9AAD005A92E9 /* TipSectionViewModel.swift */; };
+		D0A916F6281C90F0005A92E9 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A916F5281C90F0005A92E9 /* ImageFileManager.swift */; };
+		D0A916F8281C9A92005A92E9 /* KeyboardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A916F7281C9A92005A92E9 /* KeyboardComponent.swift */; };
 		D0E6FFA92819D8FD0071951D /* TextfieldComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6FFA82819D8FD0071951D /* TextfieldComponent.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,8 @@
 		D0981410281B8D130003AC6C /* TipContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TipContainer.xcdatamodel; sourceTree = "<group>"; };
 		D0A916EF281B97C0005A92E9 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		D0A916F1281B9AAD005A92E9 /* TipSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipSectionViewModel.swift; sourceTree = "<group>"; };
+		D0A916F5281C90F0005A92E9 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
+		D0A916F7281C9A92005A92E9 /* KeyboardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardComponent.swift; sourceTree = "<group>"; };
 		D0E6FFA82819D8FD0071951D /* TextfieldComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,6 +240,7 @@
 			children = (
 				D098140F281B8D130003AC6C /* TipContainer.xcdatamodeld */,
 				D0A916EF281B97C0005A92E9 /* DatabaseManager.swift */,
+				D0A916F5281C90F0005A92E9 /* ImageFileManager.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				D0E6FFA82819D8FD0071951D /* TextfieldComponent.swift */,
 				D02D2EA3281B716900BBABE1 /* CameraComponent.swift */,
 				D02D2EA5281B737400BBABE1 /* CheckboxComponent.swift */,
+				D0A916F7281C9A92005A92E9 /* KeyboardComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -385,9 +391,11 @@
 			files = (
 				D0756014281A4CF500DC0037 /* SavedPaymentView.swift in Sources */,
 				D02572D92818CBC6004F1C1B /* Images.swift in Sources */,
+				D0A916F6281C90F0005A92E9 /* ImageFileManager.swift in Sources */,
 				D0A916F2281B9AAD005A92E9 /* TipSectionViewModel.swift in Sources */,
 				D0647CF52818EBCA009D2BD0 /* PaymentsListView.swift in Sources */,
 				D02D2E9E281A55FB00BBABE1 /* Date.swift in Sources */,
+				D0A916F8281C9A92005A92E9 /* KeyboardComponent.swift in Sources */,
 				D02572DB2818D024004F1C1B /* Colors.swift in Sources */,
 				D0647CFB281905F7009D2BD0 /* Keyboard.swift in Sources */,
 				D02D2EA6281B737400BBABE1 /* CheckboxComponent.swift in Sources */,
@@ -566,6 +574,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TipJar/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need to access camera to take photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -598,6 +607,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TipJar/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need to access camera to take photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

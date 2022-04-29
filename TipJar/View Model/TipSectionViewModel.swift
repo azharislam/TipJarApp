@@ -27,7 +27,9 @@ final class TipSectionViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let defaultValue: Double = 100.00
     private let tipPercentage: Double = 10.0/100.0
-    
+    @Published var showPaymentsView: Bool? = false
+    @Published var isKeyboardEnabled: Bool = false
+
     
     init() {
         getPayments()
@@ -60,7 +62,6 @@ final class TipSectionViewModel: ObservableObject {
     
     func saveData() {
         manager.saveData()
-        print("Saved data successfully")
     }
     
     func calculateTip() {
@@ -71,6 +72,22 @@ final class TipSectionViewModel: ObservableObject {
                 self.perPersonAmount = self.totalTip / Double(self.peopleCount)
             }
             .store(in: &cancellables)
+    }
+    
+    func savePayment() {
+        $image.sink { [weak self] image in
+            guard let self = self else { return }
+            guard let image = image else { return }
+            let imageUuid = UUID().uuidString
+            ImageFileManager.saveImage(imageUuid, image: image) { error in
+                if error != nil {
+                    print("Error saving image")
+                }
+            }
+            self.addPayment(totalAmount: self.amount, totalTip: self.totalTip, image: ImageFileManager.fileName)
+            self.showPaymentsView = true
+        }
+        .store(in: &cancellables)
     }
     
     var moreThanOnePerson: Bool {
