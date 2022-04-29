@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct FormSectionView: View {
+struct TipSectionView: View {
     
-    @StateObject private var viewModel = FormSectionViewModel()
+    @StateObject private var viewModel = TipSectionViewModel()
+    
     @State private var showPaymentsView: Bool?
-
     @State var textField: String = ""
-    @State var newReceipt = Receipt(savedAmount: 0.0, savedTip: 0.0, savedImage: "")
+    @State private var showCamera: Bool = false
+    @State private var isCheckSelected: Bool = false
     
     var body: some View {
         
@@ -55,6 +56,7 @@ struct FormSectionView: View {
             .frame(maxWidth: .infinity,
                    maxHeight: .infinity)
             .navigationBarHidden(true)
+            .sheet(isPresented: $showCamera) { cameraView }
         }
     }
     
@@ -64,7 +66,7 @@ struct FormSectionView: View {
         VStack(alignment: .leading) {
             Text("Enter amount")
                 .font(Font.Roboto.medium(size: 16))
-            CustomTextfieldView {
+            TextfieldComponent {
                 TextField("100.00", text: $viewModel.enteredAmount)
                     .keyboardType(.decimalPad)
                     .frame(height: 80)
@@ -131,9 +133,9 @@ struct FormSectionView: View {
         VStack(alignment: .leading) {
             Text("% TIP")
                 .font(Font.Roboto.medium(size: 16))
-            CustomTextfieldView {
+            TextfieldComponent {
                 TextField("", text: $textField)
-                    .keyboardType(.numberPad)
+                    .disabled(true)
                     .frame(height: 80)
                     .overlay(alignment: .center, content: {
                         Text("10")
@@ -175,16 +177,14 @@ struct FormSectionView: View {
     @ViewBuilder
     private var checkbox: some View {
         HStack {
-            Button(action: {}) {
-                Image.checkSelected
+            Button(action: {
+                isCheckSelected.toggle()
+            }) {
+                isCheckSelected ? Image.checkSelected : Image.checkUnselected
             }
-            .frame(width: 31, height: 31)
+            .buttonStyle(CheckboxComponent(isSelected: isCheckSelected))
             .background(.clear)
-            .cornerRadius(7)
-            .overlay(
-                RoundedRectangle(cornerRadius: 7)
-                    .stroke(Color.checkboxOrange, lineWidth: 1)
-            )
+            
             Text("Take a photo of receipt")
                 .font(Font.Roboto.medium(size: 16))
                 .padding(.leading, 5)
@@ -197,10 +197,17 @@ struct FormSectionView: View {
     private var saveButton: some View {
         VStack {
             Button(action: {
-                print("\(viewModel.isSaved.description)")
-                newReceipt.totalAmount = viewModel.amount
-                newReceipt.tipAmount = viewModel.totalTip
-                viewModel.addSavedPayment(receipt: newReceipt)
+                if isCheckSelected {
+                    showCamera = true
+                } else {
+                    guard !viewModel.enteredAmount.isEmpty else { return }
+                    viewModel.addPayment(totalAmount: viewModel.amount, totalTip: viewModel.totalTip, image: "")
+                    print("Entered amount is \(viewModel.amount)")
+                    print("Total tip is \(viewModel.totalTip)")
+                    print("Count is \(viewModel.savedPayments.count)")
+                    viewModel.enteredAmount = ""
+                    // Add some nice graphic to show successful save
+                }
             }) {
                 Text("Save payment")
                     .font(Font.Roboto.bold(size: 16))
@@ -216,10 +223,16 @@ struct FormSectionView: View {
             }
         }
     }
+    
+    @ViewBuilder
+    private var cameraView: some View {
+        CameraComponent(isShowing: $isCheckSelected, selectedImage: $viewModel.image)
+    }
+
 }
 
 struct AmountFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        FormSectionView()
+        TipSectionView()
     }
 }

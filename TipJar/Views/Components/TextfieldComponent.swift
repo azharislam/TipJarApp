@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomTextfieldView<Content: View>: View {
+struct TextfieldComponent<Content: View>: View {
     
     private let content: Content
     

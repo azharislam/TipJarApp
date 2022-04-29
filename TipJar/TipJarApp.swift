@@ -11,7 +11,8 @@ import SwiftUI
 struct TipJarApp: App {
     var body: some Scene {
         WindowGroup {
-            FormSectionView()
+            TipSectionView()
+                .environment(\.managedObjectContext, DatabaseManager.instance.container.viewContext)
         }
     }
 }

@@ -10,8 +10,9 @@ import SwiftUI
 struct PaymentsListView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject private var viewModel = FormSectionViewModel()
-    
+    @ObservedObject private var viewModel = TipSectionViewModel()
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.savedDate, order: .reverse)])
+    var payments: FetchedResults<SavedPayments>
     
     var body: some View {
         ZStack {
@@ -22,7 +23,7 @@ struct PaymentsListView: View {
                         presentationMode.wrappedValue.dismiss()
                     }
                 }
-                if viewModel.receipts.isEmpty {
+                if viewModel.savedPayments.isEmpty {
                     ScrollView {
                         VStack(alignment: .center) {
                             Text("No Saved Payments")
@@ -39,8 +40,10 @@ struct PaymentsListView: View {
                 } else {
                     ScrollView {
                         LazyVGrid(columns: [GridItem(.flexible())], spacing: 8) {
-                            ForEach(viewModel.receipts) { receipt in
-                                SavedPaymentView(receipt: receipt)
+                            VStack {
+                                ForEach(viewModel.savedPayments) { savedPayment in
+                                    SavedPaymentView(payment: savedPayment)
+                                }
                             }
                         }
                     }
