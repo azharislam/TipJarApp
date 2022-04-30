@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// Re-usable checkbox view
+
 struct CheckboxComponent: ButtonStyle {
     enum Attributes {
         case `default`
@@ -17,7 +19,7 @@ struct CheckboxComponent: ButtonStyle {
                 return true
             }
         }
-
+        
         func borderColor(_ isSelected: Bool) -> Color {
             switch self {
             case .default:
@@ -25,10 +27,10 @@ struct CheckboxComponent: ButtonStyle {
             }
         }
     }
-
+    
     public var attribute: Attributes = .default
     public var isSelected: Bool = false
-
+    
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: 31, height: 31)

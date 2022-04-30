@@ -9,22 +9,25 @@ import SwiftUI
 
 struct SavedPaymentView: View {
     
-    var payment: SavedPayments
+    var payment: SavedPayments     // Put this in an abstract model
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(payment.savedDate?.default ?? "Can't find date")
+            Text(payment.savedDate?.customDate ?? "Unknown Date")
                 .font(Font.Roboto.medium(size: 16))
             HStack {
                 Text(payment.totalAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-                .font(Font.Roboto.medium(size: 24))
+                    .font(Font.Roboto.medium(size: 24))
                 Text(payment.totalTip, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                     .font(Font.Roboto.medium(size: 16))
                     .foregroundColor(Color.tipGray)
                     .padding(.leading, 20)
                 Spacer()
-                Image(uiImage: ImageFileManager.getImage(payment.savedImage ?? "") ?? UIImage())
-                    .padding(.bottom, 30)
+                Image(uiImage: ImageFileManager.fetchImage(payment.savedImage ?? "") ?? UIImage())
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 53.0, height: 53.0)
+                    .cornerRadius(12)
             }
             .padding(.top, -30)
         }
@@ -32,9 +35,9 @@ struct SavedPaymentView: View {
         .background(.white)
     }
 }
-
+//
 //struct SavedPaymentView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        SavedPaymentView(receipt: Receipt(savedAmount: 405.52, savedTip: 40.52, savedImage: ""))
+//        SavedPaymentView(payment: )
 //    }
 //}

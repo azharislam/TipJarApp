@@ -7,33 +7,32 @@
 
 import UIKit
 
-public struct NoApplicationSupportDirectoryAvailable: Error {}
+/// FileManager abstraction to save/retrieve images from user directory
 
 class ImageFileManager {
-
-    static var fileName: String = ""
-
+    
+    static var imageName: String = ""
+    
     static func applicationSupportURL() -> URL? {
         let fileManager = FileManager.default
-
+        
         let urls = fileManager.urls(for: FileManager.SearchPathDirectory.applicationSupportDirectory, in: .userDomainMask)
         
         return urls.last
     }
     
-    static func saveImage(_ fileName: String, image: UIImage, completion: @escaping (Error?) -> Void = { _ in }) {
+    static func saveImage(_ imageName: String, image: UIImage, completion: @escaping (Error?) -> Void = { _ in }) {
         guard let documentsDirectory = self.applicationSupportURL() else {
             completion(NoApplicationSupportDirectoryAvailable())
             return
         }
-
-        self.fileName = fileName
-
-        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        
+        self.imageName = imageName
+        
+        let fileURL = documentsDirectory.appendingPathComponent(imageName)
         if let data = image.jpegData(compressionQuality:  1.0),
-          !FileManager.default.fileExists(atPath: fileURL.path) {
+           !FileManager.default.fileExists(atPath: fileURL.path) {
             do {
-                // writes the image data to disk
                 try data.write(to: fileURL)
                 completion(nil)
             } catch {
@@ -42,15 +41,16 @@ class ImageFileManager {
         }
     }
     
-    static func getImage(_ fileName: String) -> UIImage? {
+    static func fetchImage(_ imageName: String) -> UIImage? {
         guard let documentsDirectory = self.applicationSupportURL() else {
             return nil
         }
         
-        let imageURL = documentsDirectory.appendingPathComponent("\(fileName).png")
+        let imageURL = documentsDirectory.appendingPathComponent("\(imageName).png")
         let image = UIImage(contentsOfFile: imageURL.path)
-       
+        
         return image
     }
 }
 
+public struct NoApplicationSupportDirectoryAvailable: Error {}

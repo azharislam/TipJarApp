@@ -8,16 +8,18 @@
 import Foundation
 import CoreData
 
-class DatabaseManager {
+/// Core Data abstraction
+
+final class DatabaseManager {
     
     static let instance = DatabaseManager()
     
     let container: NSPersistentContainer
     let context: NSManagedObjectContext
-
+    
     init() {
         container = NSPersistentContainer(name: "TipContainer")
-
+        
         container.loadPersistentStores { storeDescription, error in
             if let error = error {
                 print("Unresolved error \(error)")

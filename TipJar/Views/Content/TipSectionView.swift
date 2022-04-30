@@ -9,12 +9,16 @@ import SwiftUI
 
 struct TipSectionView: View, KeyboardReadable {
     
+    // MARK: - Variables
+    
     @StateObject private var viewModel = TipSectionViewModel()
     
-    @State var textField: String = ""
-    @State private var showCamera: Bool = false
-    @State private var isCheckSelected: Bool = false
+    @State private var textField: String = ""
     @State private var currency = "USD"
+    @State private var isCameraEnabled: Bool = false
+    @State private var isCheckSelected: Bool = false
+    
+    // MARK: - Main Content View
     
     var body: some View {
         
@@ -25,8 +29,9 @@ struct TipSectionView: View, KeyboardReadable {
                                selection: $viewModel.showPaymentsView) {
                     EmptyView()
                 }
+                
                 VStack(spacing: 15) {
-                    HomeHeaderView { action in
+                    TipSectionHeaderView { action in
                         switch action {
                         case .savedPayments:
                             viewModel.showPaymentsView = true
@@ -58,10 +63,11 @@ struct TipSectionView: View, KeyboardReadable {
             .frame(maxWidth: .infinity,
                    maxHeight: .infinity)
             .navigationBarHidden(true)
-            .sheet(isPresented: $showCamera) { cameraView }
+            .sheet(isPresented: $isCameraEnabled) { cameraView }
         }
     }
     
+    // MARK: - User Input Textfield
     
     @ViewBuilder
     private var amountField: some View {
@@ -83,6 +89,8 @@ struct TipSectionView: View, KeyboardReadable {
             }
         }
     }
+    
+    // MARK: - People Counter
     
     @ViewBuilder
     private var peopleCount: some View {
@@ -130,6 +138,8 @@ struct TipSectionView: View, KeyboardReadable {
         }
     }
     
+    // MARK: - Tip Percentage
+    
     @ViewBuilder
     private var tipField: some View {
         VStack(alignment: .leading) {
@@ -154,6 +164,8 @@ struct TipSectionView: View, KeyboardReadable {
         
     }
     
+    // MARK: - Amount Summary
+    
     @ViewBuilder
     private var summarySection: some View {
         VStack(spacing: 16) {
@@ -176,6 +188,8 @@ struct TipSectionView: View, KeyboardReadable {
         }
     }
     
+    // MARK: - Take Photo Checkbox
+    
     @ViewBuilder
     private var checkbox: some View {
         HStack {
@@ -195,18 +209,17 @@ struct TipSectionView: View, KeyboardReadable {
         }
     }
     
+    // MARK: - Save Payment Button
+    
     @ViewBuilder
     private var saveButton: some View {
         VStack {
             Button(action: {
                 if isCheckSelected {
-                    showCamera = true
+                    isCameraEnabled = true
                 } else {
                     guard !viewModel.enteredAmount.isEmpty else { return }
-                    viewModel.savePayment()
-                    print("Entered amount is \(viewModel.amount)")
-                    print("Total tip is \(viewModel.totalTip)")
-                    print("Count is \(viewModel.savedPayments.count)")
+                    viewModel.addPayment(totalAmount: viewModel.amount, totalTip: viewModel.totalTip, image: "")
                     viewModel.showPaymentsView = true
                     viewModel.enteredAmount = ""
                     // Add some nice graphic to show successful save
@@ -220,6 +233,7 @@ struct TipSectionView: View, KeyboardReadable {
                     .background(Color.gradientOrange)
                     .cornerRadius(12)
                     .overlay(
+                        // Make this a custom re-usable component
                         RoundedRectangle(cornerRadius: 12)
                             .stroke(LinearGradient(gradient: Gradient(colors: [.white.opacity(0.1936), .black.opacity(0.198)]), startPoint: .top, endPoint: .bottom), lineWidth: 1)
                     )
@@ -227,10 +241,14 @@ struct TipSectionView: View, KeyboardReadable {
         }
     }
     
+    // MARK: - Camera View
+    
     @ViewBuilder
     private var cameraView: some View {
-        CameraComponent(isShowing: $isCheckSelected, selectedImage: $viewModel.image)
+        CameraComponent(isShowing: $isCameraEnabled, selectedImage: $viewModel.image)
     }
+    
+    // MARK: - Keyboard View
     
     @ViewBuilder
     private var keyboardView: some View {
@@ -245,6 +263,8 @@ struct TipSectionView: View, KeyboardReadable {
     }
     
 }
+
+// MARK: - Preview
 
 struct AmountFieldView_Previews: PreviewProvider {
     static var previews: some View {

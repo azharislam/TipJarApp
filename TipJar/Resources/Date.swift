@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// Custom Date formatter
+
 extension DateFormatter {
 
     static func formatString(_ format: String) -> DateFormatter {
@@ -20,7 +22,7 @@ extension DateFormatter {
 
 extension Date {
     
-    var `default`: String {
+    var customDate: String {
         DateFormatter.default.string(from: self)
     }
 }

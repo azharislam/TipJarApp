@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct PaymentsHeaderView: View {
+struct PaymentsListHeaderView: View {
     
+    /// Enum for future use to add new buttons, like filter.
     enum PaymentHeaderActions {
         case back
     }
@@ -16,7 +17,7 @@ struct PaymentsHeaderView: View {
     typealias PaymentsHeaderActionHandler = (_ action: PaymentHeaderActions) -> Void
     let handler: PaymentsHeaderActionHandler
     
-    internal init(handler: @escaping PaymentsHeaderView.PaymentsHeaderActionHandler) {
+    internal init(handler: @escaping PaymentsListHeaderView.PaymentsHeaderActionHandler) {
         self.handler = handler
     }
     
@@ -51,6 +52,6 @@ struct PaymentsHeaderView: View {
 
 struct PaymentsHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentsHeaderView(handler: { _ in }).previewLayout(.sizeThatFits)
+        PaymentsListHeaderView(handler: { _ in }).previewLayout(.sizeThatFits)
     }
 }

@@ -8,16 +8,19 @@
 import SwiftUI
 import Combine
 
-public struct KeyboardComponent: View {
+/// Re-usable custom keyboard with Done button
+/// In use until native solution with SwiftUI for Number/Decimal keypads
 
+public struct KeyboardComponent: View {
+    
     private let actionTitle: String
     private let onCompletion: (() -> Void)?
-
+    
     public init(actionTitle: String, onCompletion: (() -> Void)? = nil) {
         self.actionTitle = actionTitle
         self.onCompletion = onCompletion
     }
-
+    
     public var body: some View {
         HStack {
             Spacer()

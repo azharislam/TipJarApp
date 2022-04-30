@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct HomeHeaderView: View {
+struct TipSectionHeaderView: View {
     
+    /// Enum for future use to add new buttons, like currency picker.
     enum HomeHeaderActions {
         case savedPayments
     }
@@ -17,10 +18,9 @@ struct HomeHeaderView: View {
     
     let handler: HomeHeaderActionsHandler
     
-    init(handler: @escaping HomeHeaderView.HomeHeaderActionsHandler) {
+    init(handler: @escaping TipSectionHeaderView.HomeHeaderActionsHandler) {
         self.handler = handler
     }
-    
     
     var body: some View {
         HStack {
@@ -44,6 +44,6 @@ struct HomeHeaderView: View {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeHeaderView(handler: { _ in })
+        TipSectionHeaderView(handler: { _ in })
     }
 }

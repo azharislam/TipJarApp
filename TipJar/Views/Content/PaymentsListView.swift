@@ -9,13 +9,17 @@ import SwiftUI
 
 struct PaymentsListView: View {
     
+    // MARK: - Variables
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject private var viewModel = TipSectionViewModel()
+    
+    // MARK: - Content View
     
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
-                PaymentsHeaderView { action in
+                PaymentsListHeaderView { action in
                     switch action {
                     case .back:
                         presentationMode.wrappedValue.dismiss()
@@ -38,7 +42,7 @@ struct PaymentsListView: View {
                 } else {
                     ScrollView {
                         LazyVGrid(columns: [GridItem(.flexible())], spacing: 8) {
-                            VStack {
+                            VStack { // Change this to a list and allow delete
                                 ForEach(viewModel.savedPayments) { savedPayment in
                                     SavedPaymentView(payment: savedPayment)
                                 }
@@ -53,6 +57,8 @@ struct PaymentsListView: View {
         .navigationBarHidden(true)
     }
 }
+
+// MARK: - Preview
 
 struct PaymentsListView_Previews: PreviewProvider {
     static var previews: some View {

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// Re-usable custom textfield
+
 struct TextfieldComponent<Content: View>: View {
     
     private let content: Content
@@ -14,7 +16,7 @@ struct TextfieldComponent<Content: View>: View {
     public init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
-
+    
     public var body: some View {
         content
             .frame(maxWidth: .infinity)

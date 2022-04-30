@@ -8,6 +8,8 @@
 import SwiftUI
 import Combine
 
+/// Keyboard helper that stops view from moving when keyboard is visible
+
 struct AdaptsToKeyboard: ViewModifier {
     @State var currentHeight: CGFloat = 0
     
@@ -48,6 +50,8 @@ public extension View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
+/// A protocol with publisher that reads keyboard changes
 
 protocol KeyboardReadable {
     var keyboardPublisher: AnyPublisher<Bool, Never> { get }
