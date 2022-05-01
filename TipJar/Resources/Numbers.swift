@@ -10,7 +10,7 @@ import Foundation
 // Add logic here that will handle string to decimal and currency logic
 
 extension Double {
-    func toString() -> String {
-        return String(format: "%.2f",self)
+    func toDollarString() -> String {
+        return String(format: "$%.02f",self)
     }
 }

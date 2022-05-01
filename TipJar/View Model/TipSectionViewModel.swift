@@ -54,11 +54,15 @@ extension TipSectionViewModel {
     }
     
     var amountString: String {
-        amount.toString()
+        amount.toDollarString()
     }
     
     var totalTipString: String {
-        totalTip.toString()
+        totalTip.toDollarString()
+    }
+    
+    var perPersonAmountString: String {
+        perPersonAmount.toDollarString()
     }
 }
 

@@ -173,7 +173,7 @@ struct TipSectionView: View, KeyboardReadable {
                 Text(Constants.TipSection.tipSummary)
                     .font(Font.Roboto.medium(size: 16))
                 Spacer()
-                Text(viewModel.totalTip, format: .currency(code: Locale.current.currencyCode ?? currency))
+                Text(viewModel.totalTipString)
                     .font(Font.Roboto.medium(size: 16))
             }
             
@@ -181,7 +181,7 @@ struct TipSectionView: View, KeyboardReadable {
                 Text(Constants.TipSection.peopleSummary)
                     .font(Font.Roboto.medium(size: 24))
                 Spacer()
-                Text(viewModel.perPersonAmount, format: .currency(code: Locale.current.currencyCode ?? currency))
+                Text(viewModel.perPersonAmountString)
                     .font(Font.Roboto.medium(size: 24))
             }
             
