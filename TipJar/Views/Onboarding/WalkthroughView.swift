@@ -28,7 +28,7 @@ struct WalkthroughView: View {
             }
             
             if currentPage == 3 {
-                SlideView(image: Constants.Onboarding.thirdSlideImage, title: Constants.Onboarding.thirdSlideTitle, detail: Constants.Onboarding.secondSlideDetail, bgColor: Color.white)
+                SlideView(image: Constants.Onboarding.thirdSlideImage, title: Constants.Onboarding.thirdSlideTitle, detail: Constants.Onboarding.thirdSlideDetail, bgColor: Color.white)
                     .transition(.scale)
             }
         }

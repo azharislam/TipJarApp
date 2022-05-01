@@ -33,7 +33,6 @@
 		D0A916F2281B9AAD005A92E9 /* TipSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A916F1281B9AAD005A92E9 /* TipSectionViewModel.swift */; };
 		D0A916F6281C90F0005A92E9 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A916F5281C90F0005A92E9 /* ImageFileManager.swift */; };
 		D0A916F8281C9A92005A92E9 /* KeyboardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A916F7281C9A92005A92E9 /* KeyboardComponent.swift */; };
-		D0AED3DD281CF86900D90634 /* PaymentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AED3DC281CF86900D90634 /* PaymentListViewModel.swift */; };
 		D0AED3E1281D05BB00D90634 /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AED3E0281D05BB00D90634 /* SlideView.swift */; };
 		D0AED3E3281D099600D90634 /* WalkthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AED3E2281D099600D90634 /* WalkthroughView.swift */; };
 		D0AED3E5281D0A0B00D90634 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AED3E4281D0A0B00D90634 /* OnboardingView.swift */; };
@@ -93,7 +92,6 @@
 		D0A916F1281B9AAD005A92E9 /* TipSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipSectionViewModel.swift; sourceTree = "<group>"; };
 		D0A916F5281C90F0005A92E9 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		D0A916F7281C9A92005A92E9 /* KeyboardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardComponent.swift; sourceTree = "<group>"; };
-		D0AED3DC281CF86900D90634 /* PaymentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentListViewModel.swift; sourceTree = "<group>"; };
 		D0AED3E0281D05BB00D90634 /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
 		D0AED3E2281D099600D90634 /* WalkthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughView.swift; sourceTree = "<group>"; };
 		D0AED3E4281D0A0B00D90634 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				D0A916F1281B9AAD005A92E9 /* TipSectionViewModel.swift */,
-				D0AED3DC281CF86900D90634 /* PaymentListViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -456,7 +453,6 @@
 				D0D892FA281E22F3002DE09F /* SavedPayment+CoreDataProperties.swift in Sources */,
 				D02572BF28187149004F1C1B /* TipSectionHeaderView.swift in Sources */,
 				D07560092819FCF700DC0037 /* Numbers.swift in Sources */,
-				D0AED3DD281CF86900D90634 /* PaymentListViewModel.swift in Sources */,
 				D0A916F0281B97C0005A92E9 /* DatabaseManager.swift in Sources */,
 				D0D892F6281E22B0002DE09F /* TipJarContainer.xcdatamodeld in Sources */,
 				D0E6FFA92819D8FD0071951D /* TextfieldComponent.swift in Sources */,
