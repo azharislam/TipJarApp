@@ -215,10 +215,11 @@ struct TipSectionView: View, KeyboardReadable {
     private var saveButton: some View {
         VStack {
             Button(action: {
+                guard !viewModel.enteredAmount.isEmpty else { return }
+                
                 if isCheckSelected {
                     isCameraEnabled = true
                 } else {
-                    guard !viewModel.enteredAmount.isEmpty else { return }
                     viewModel.addPayment(totalAmount: viewModel.amountString, totalTip: viewModel.totalTipString)
                     viewModel.showPaymentsView = true
                     viewModel.enteredAmount = Constants.App.emptyString

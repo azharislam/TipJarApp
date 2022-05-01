@@ -33,6 +33,7 @@ final class TipSectionViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let defaultValue: Double = 100.00
     private let tipPercentage: Double = 10.0/100.0
+    var savedPayment: SavedPayment?
     
     init() {
         getPayments()

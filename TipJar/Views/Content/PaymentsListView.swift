@@ -13,6 +13,7 @@ struct PaymentsListView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject private var viewModel = TipSectionViewModel()
+    @State private var isSheetPresented: Bool = false
     
     // MARK: - Content View
     
@@ -45,7 +46,8 @@ struct PaymentsListView: View {
                             VStack {
                                 ForEach(viewModel.savedPayments) { savedPayment in
                                     Button {
-                                        print("Button is tapped")
+                                        viewModel.savedPayment = savedPayment
+                                        isSheetPresented = true
                                     } label: {
                                         SavedPaymentView(enteredAmount: savedPayment.totalAmount, totalTip: savedPayment.tipTotal, savedImage: savedPayment.image, date: savedPayment.date)
 
@@ -60,6 +62,9 @@ struct PaymentsListView: View {
         .frame(maxWidth: .infinity,
                maxHeight: .infinity)
         .navigationBarHidden(true)
+        .customSheet(isPresented: $isSheetPresented) {
+            PaymentDetailView(savedPayment: viewModel.savedPayment!)
+        }
     }
 }
 
