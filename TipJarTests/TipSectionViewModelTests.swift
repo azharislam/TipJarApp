@@ -11,6 +11,7 @@ import XCTest
 class TipSectionViewModelTests: XCTestCase {
 
     private let viewModel = TipSectionViewModel()
+    private let database = DatabaseManager.instance
     
     // MARK: - Test Variables
     
@@ -48,7 +49,7 @@ class TipSectionViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.perPersonAmountString, "$2.50")
     }
     
-    // MARK: - Test Functions
+    // MARK: - Test Calculation Function
     
     func test_calculateAmount_success() {
         viewModel.enteredAmount = "100"
@@ -98,5 +99,39 @@ class TipSectionViewModelTests: XCTestCase {
         viewModel.peopleCount = 2
         viewModel.calculateTip()
         XCTAssertEqual(viewModel.perPersonAmountString, "$10.00")
+    }
+    
+    func test_calculateAmountEmpty_success() {
+        viewModel.enteredAmount = ""
+        viewModel.calculateTip()
+        XCTAssertTrue(viewModel.enteredAmount.isEmpty)
+    }
+    
+    func test_calculateAmountEmpty_fail() {
+        viewModel.enteredAmount = "125"
+        viewModel.calculateTip()
+        XCTAssertFalse(viewModel.enteredAmount.isEmpty)
+    }
+    
+    func test_calculateAmountEmpty_defaultSuccess() {
+        viewModel.enteredAmount = ""
+        viewModel.calculateTip()
+        XCTAssertEqual(viewModel.amount, 100)
+        XCTAssertFalse(viewModel.amount.isZero)
+        XCTAssertEqual(viewModel.totalTip, 10)
+        XCTAssertFalse(viewModel.totalTip.isZero)
+        XCTAssertEqual(viewModel.perPersonAmount, 10)
+        XCTAssertFalse(viewModel.perPersonAmount.isZero)
+    }
+    
+    func test_calculateAmountEmpty_defaultFail() {
+        viewModel.enteredAmount = "0"
+        viewModel.calculateTip()
+        XCTAssertEqual(viewModel.amount, 0)
+        XCTAssertTrue(viewModel.amount.isZero)
+        XCTAssertEqual(viewModel.totalTip, 0)
+        XCTAssertTrue(viewModel.totalTip.isZero)
+        XCTAssertEqual(viewModel.perPersonAmount, 0)
+        XCTAssertTrue(viewModel.perPersonAmount.isZero)
     }
 }
