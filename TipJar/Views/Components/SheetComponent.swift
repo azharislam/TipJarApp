@@ -1,15 +1,15 @@
 //
-//  ModalComponent.swift
+//  SheetComponent.swift
 //  TipJar
 //
 //  Created by Azhar Islam on 01/05/2022.
 //
 
+import Foundation
 import SwiftUI
 
 /// Custom modal view that pops up when user taps a payment from payment list
 /// Built generically so it can be modified for future changes
-
 struct SheetComponent<Content: View>: View {
     @Binding var isPresented: Bool
     var content: () -> Content

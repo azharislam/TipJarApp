@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct PaymentDetailView: View {
-    
+
     var savedPayment: SavedPayment
 
     var body: some View {
+        
         VStack(spacing: 12) {
             Image(uiImage: (ImageFileManager.fetchImage(savedPayment.image ) ?? UIImage(named: Constants.App.placeholder)) ?? UIImage())
                 .resizable()
@@ -21,7 +22,7 @@ struct PaymentDetailView: View {
                 .cornerRadius(12)
                 .overlay(RoundedRectangle(cornerRadius: 12)
                     .stroke(Color.gray, lineWidth: 0.3))
-            
+
             VStack(alignment: .leading, spacing: 12) {
                 Text(savedPayment.date )
                     .font(Font.Roboto.medium(size: 16))

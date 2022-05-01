@@ -37,6 +37,8 @@
 		D0AED3E3281D099600D90634 /* WalkthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AED3E2281D099600D90634 /* WalkthroughView.swift */; };
 		D0AED3E5281D0A0B00D90634 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AED3E4281D0A0B00D90634 /* OnboardingView.swift */; };
 		D0AED3E7281D0F3B00D90634 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0AED3E6281D0F3B00D90634 /* LaunchScreen.storyboard */; };
+		D0BF0B5C281E5CF20058E2F5 /* PaymentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BF0B5B281E5CF20058E2F5 /* PaymentDetailView.swift */; };
+		D0BF0B5E281E5D3D0058E2F5 /* SheetComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BF0B5D281E5D3D0058E2F5 /* SheetComponent.swift */; };
 		D0D892F6281E22B0002DE09F /* TipJarContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0D892F4281E22B0002DE09F /* TipJarContainer.xcdatamodeld */; };
 		D0D892F9281E22F3002DE09F /* SavedPayment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D892F7281E22F3002DE09F /* SavedPayment+CoreDataClass.swift */; };
 		D0D892FA281E22F3002DE09F /* SavedPayment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D892F8281E22F3002DE09F /* SavedPayment+CoreDataProperties.swift */; };
@@ -96,6 +98,8 @@
 		D0AED3E2281D099600D90634 /* WalkthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughView.swift; sourceTree = "<group>"; };
 		D0AED3E4281D0A0B00D90634 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D0AED3E6281D0F3B00D90634 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D0BF0B5B281E5CF20058E2F5 /* PaymentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailView.swift; sourceTree = "<group>"; };
+		D0BF0B5D281E5D3D0058E2F5 /* SheetComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetComponent.swift; sourceTree = "<group>"; };
 		D0D892F5281E22B0002DE09F /* TipJarContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TipJarContainer.xcdatamodel; sourceTree = "<group>"; };
 		D0D892F7281E22F3002DE09F /* SavedPayment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedPayment+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D0D892F8281E22F3002DE09F /* SavedPayment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedPayment+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -265,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				D0756013281A4CF500DC0037 /* SavedPaymentView.swift */,
+				D0BF0B5B281E5CF20058E2F5 /* PaymentDetailView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 				D02D2EA3281B716900BBABE1 /* CameraComponent.swift */,
 				D02D2EA5281B737400BBABE1 /* CheckboxComponent.swift */,
 				D0A916F7281C9A92005A92E9 /* KeyboardComponent.swift */,
+				D0BF0B5D281E5D3D0058E2F5 /* SheetComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 				D0756014281A4CF500DC0037 /* SavedPaymentView.swift in Sources */,
 				D02572D92818CBC6004F1C1B /* Images.swift in Sources */,
 				D0A916F6281C90F0005A92E9 /* ImageFileManager.swift in Sources */,
+				D0BF0B5E281E5D3D0058E2F5 /* SheetComponent.swift in Sources */,
 				D0A916F2281B9AAD005A92E9 /* TipSectionViewModel.swift in Sources */,
 				D0647CF52818EBCA009D2BD0 /* PaymentsListView.swift in Sources */,
 				D02D2E9E281A55FB00BBABE1 /* Date.swift in Sources */,
@@ -455,6 +462,7 @@
 				D07560092819FCF700DC0037 /* Numbers.swift in Sources */,
 				D0A916F0281B97C0005A92E9 /* DatabaseManager.swift in Sources */,
 				D0D892F6281E22B0002DE09F /* TipJarContainer.xcdatamodeld in Sources */,
+				D0BF0B5C281E5CF20058E2F5 /* PaymentDetailView.swift in Sources */,
 				D0E6FFA92819D8FD0071951D /* TextfieldComponent.swift in Sources */,
 				6C51DC1A27B6176F00E54296 /* TipJarApp.swift in Sources */,
 				D0647CF82818F07D009D2BD0 /* PaymentsListHeaderView.swift in Sources */,
