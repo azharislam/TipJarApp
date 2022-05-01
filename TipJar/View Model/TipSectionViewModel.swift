@@ -11,7 +11,7 @@ import UIKit
 
 final class TipSectionViewModel: ObservableObject {
     
-    // MARK: - Published Variables
+    // MARK: - Variables
     
     @Published var showPaymentsView: Bool? = false
     @Published var isKeyboardEnabled: Bool = false
@@ -27,12 +27,10 @@ final class TipSectionViewModel: ObservableObject {
         }
     }
     
-    // MARK: - Private Variables
-    
     private let manager = DatabaseManager.instance
     private var cancellables = Set<AnyCancellable>()
     private let defaultValue: Double = 100.00
-    private let tipPercentage: Double = 10.0/100.0
+    let tipPercentage: Double = 10.0/100.0
     var savedPayment: SavedPayment?
     
     init() {

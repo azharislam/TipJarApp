@@ -39,6 +39,7 @@
 		D0AED3E7281D0F3B00D90634 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0AED3E6281D0F3B00D90634 /* LaunchScreen.storyboard */; };
 		D0BF0B5C281E5CF20058E2F5 /* PaymentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BF0B5B281E5CF20058E2F5 /* PaymentDetailView.swift */; };
 		D0BF0B5E281E5D3D0058E2F5 /* SheetComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BF0B5D281E5D3D0058E2F5 /* SheetComponent.swift */; };
+		D0BF0B64281F24A00058E2F5 /* TipSectionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BF0B63281F24A00058E2F5 /* TipSectionViewModelTests.swift */; };
 		D0D892F6281E22B0002DE09F /* TipJarContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0D892F4281E22B0002DE09F /* TipJarContainer.xcdatamodeld */; };
 		D0D892F9281E22F3002DE09F /* SavedPayment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D892F7281E22F3002DE09F /* SavedPayment+CoreDataClass.swift */; };
 		D0D892FA281E22F3002DE09F /* SavedPayment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D892F8281E22F3002DE09F /* SavedPayment+CoreDataProperties.swift */; };
@@ -100,6 +101,7 @@
 		D0AED3E6281D0F3B00D90634 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0BF0B5B281E5CF20058E2F5 /* PaymentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailView.swift; sourceTree = "<group>"; };
 		D0BF0B5D281E5D3D0058E2F5 /* SheetComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetComponent.swift; sourceTree = "<group>"; };
+		D0BF0B63281F24A00058E2F5 /* TipSectionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipSectionViewModelTests.swift; sourceTree = "<group>"; };
 		D0D892F5281E22B0002DE09F /* TipJarContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TipJarContainer.xcdatamodel; sourceTree = "<group>"; };
 		D0D892F7281E22F3002DE09F /* SavedPayment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedPayment+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D0D892F8281E22F3002DE09F /* SavedPayment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedPayment+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				6C51DC2A27B6177000E54296 /* TipJarTests.swift */,
+				D0BF0B63281F24A00058E2F5 /* TipSectionViewModelTests.swift */,
 			);
 			path = TipJarTests;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0BF0B64281F24A00058E2F5 /* TipSectionViewModelTests.swift in Sources */,
 				6C51DC2B27B6177000E54296 /* TipJarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
