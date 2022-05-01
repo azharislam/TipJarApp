@@ -28,11 +28,11 @@ struct PaymentsListView: View {
                 if viewModel.savedPayments.isEmpty {
                     ScrollView {
                         VStack(alignment: .center) {
-                            Text("No Saved Payments")
+                            Text(Constants.PaymentList.emptyTitle)
                                 .font(Font.Roboto.bold(size: 24))
                                 .multilineTextAlignment(.center)
                                 .padding(.top, 250)
-                            Text("It seems you haven't saved any payments! \n When you do they will show up here.")
+                            Text(Constants.PaymentList.emptyDescription)
                                 .font(Font.Roboto.medium(size: 16))
                                 .multilineTextAlignment(.center)
                                 .padding()
@@ -42,9 +42,14 @@ struct PaymentsListView: View {
                 } else {
                     ScrollView {
                         LazyVGrid(columns: [GridItem(.flexible())], spacing: 8) {
-                            VStack { // Change this to a list and allow delete
+                            VStack {
                                 ForEach(viewModel.savedPayments) { savedPayment in
-                                    SavedPaymentView(payment: savedPayment)
+                                    Button {
+                                        print("Button is tapped")
+                                    } label: {
+                                        SavedPaymentView(enteredAmount: savedPayment.totalAmount, totalTip: savedPayment.tipTotal, savedImage: savedPayment.image, date: savedPayment.date)
+
+                                    }
                                 }
                             }
                         }

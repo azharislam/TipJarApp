@@ -35,7 +35,7 @@ struct PaymentsListHeaderView: View {
                 .padding(.leading, 25)
                 Spacer()
                 
-                Text("Saved Payments".uppercased())
+                Text(Constants.PaymentList.navTitle.uppercased())
                     .font(Font.Roboto.medium(size: 16))
                     .padding(.trailing, 125)
             }

@@ -18,7 +18,7 @@ final class DatabaseManager {
     let context: NSManagedObjectContext
     
     init() {
-        container = NSPersistentContainer(name: "TipContainer")
+        container = NSPersistentContainer(name: Constants.DataModel.container)
         
         container.loadPersistentStores { storeDescription, error in
             if let error = error {

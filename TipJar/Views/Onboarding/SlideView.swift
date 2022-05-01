@@ -16,7 +16,7 @@ struct SlideView: View {
     var title: String
     var detail: String
     var bgColor: Color
-    @AppStorage("currentPage") var currentPage = 1
+    @AppStorage(Constants.App.currentPage) var currentPage = 1
     
     
     var body: some View {
@@ -36,7 +36,7 @@ struct SlideView: View {
                         }
                     }, label: {
                         
-                        Image(systemName: "chevron.left")
+                        Image(systemName: Constants.Symbols.chevronLeft)
                             .foregroundColor(.white)
                             .padding(.vertical, 10)
                             .padding(.horizontal)
@@ -52,7 +52,7 @@ struct SlideView: View {
                         currentPage = 4
                     }
                 }, label: {
-                    Text("Skip")
+                    Text(Constants.Onboarding.skip)
                         .fontWeight(.semibold)
                         .kerning(1.2)
                 })

@@ -29,7 +29,6 @@
 		D0647CFB281905F7009D2BD0 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0647CFA281905F7009D2BD0 /* Keyboard.swift */; };
 		D07560092819FCF700DC0037 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07560082819FCF700DC0037 /* Numbers.swift */; };
 		D0756014281A4CF500DC0037 /* SavedPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0756013281A4CF500DC0037 /* SavedPaymentView.swift */; };
-		D0981411281B8D130003AC6C /* TipContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D098140F281B8D130003AC6C /* TipContainer.xcdatamodeld */; };
 		D0A916F0281B97C0005A92E9 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A916EF281B97C0005A92E9 /* DatabaseManager.swift */; };
 		D0A916F2281B9AAD005A92E9 /* TipSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A916F1281B9AAD005A92E9 /* TipSectionViewModel.swift */; };
 		D0A916F6281C90F0005A92E9 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A916F5281C90F0005A92E9 /* ImageFileManager.swift */; };
@@ -39,6 +38,10 @@
 		D0AED3E3281D099600D90634 /* WalkthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AED3E2281D099600D90634 /* WalkthroughView.swift */; };
 		D0AED3E5281D0A0B00D90634 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AED3E4281D0A0B00D90634 /* OnboardingView.swift */; };
 		D0AED3E7281D0F3B00D90634 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0AED3E6281D0F3B00D90634 /* LaunchScreen.storyboard */; };
+		D0D892F6281E22B0002DE09F /* TipJarContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0D892F4281E22B0002DE09F /* TipJarContainer.xcdatamodeld */; };
+		D0D892F9281E22F3002DE09F /* SavedPayment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D892F7281E22F3002DE09F /* SavedPayment+CoreDataClass.swift */; };
+		D0D892FA281E22F3002DE09F /* SavedPayment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D892F8281E22F3002DE09F /* SavedPayment+CoreDataProperties.swift */; };
+		D0D892FC281E30B6002DE09F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D892FB281E30B6002DE09F /* Constants.swift */; };
 		D0E6FFA92819D8FD0071951D /* TextfieldComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6FFA82819D8FD0071951D /* TextfieldComponent.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +89,6 @@
 		D0647CFA281905F7009D2BD0 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		D07560082819FCF700DC0037 /* Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
 		D0756013281A4CF500DC0037 /* SavedPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPaymentView.swift; sourceTree = "<group>"; };
-		D0981410281B8D130003AC6C /* TipContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TipContainer.xcdatamodel; sourceTree = "<group>"; };
 		D0A916EF281B97C0005A92E9 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		D0A916F1281B9AAD005A92E9 /* TipSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipSectionViewModel.swift; sourceTree = "<group>"; };
 		D0A916F5281C90F0005A92E9 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
@@ -96,6 +98,10 @@
 		D0AED3E2281D099600D90634 /* WalkthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughView.swift; sourceTree = "<group>"; };
 		D0AED3E4281D0A0B00D90634 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D0AED3E6281D0F3B00D90634 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D0D892F5281E22B0002DE09F /* TipJarContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TipJarContainer.xcdatamodel; sourceTree = "<group>"; };
+		D0D892F7281E22F3002DE09F /* SavedPayment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedPayment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D0D892F8281E22F3002DE09F /* SavedPayment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedPayment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D0D892FB281E30B6002DE09F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D0E6FFA82819D8FD0071951D /* TextfieldComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +222,7 @@
 				D0647CFA281905F7009D2BD0 /* Keyboard.swift */,
 				D07560082819FCF700DC0037 /* Numbers.swift */,
 				D02D2E9D281A55FB00BBABE1 /* Date.swift */,
+				D0D892FB281E30B6002DE09F /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -268,7 +275,9 @@
 		D0AED3DE281CFDEE00D90634 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D098140F281B8D130003AC6C /* TipContainer.xcdatamodeld */,
+				D0D892F4281E22B0002DE09F /* TipJarContainer.xcdatamodeld */,
+				D0D892F7281E22F3002DE09F /* SavedPayment+CoreDataClass.swift */,
+				D0D892F8281E22F3002DE09F /* SavedPayment+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -439,14 +448,17 @@
 				D02572DB2818D024004F1C1B /* Colors.swift in Sources */,
 				D0647CFB281905F7009D2BD0 /* Keyboard.swift in Sources */,
 				D02D2EA6281B737400BBABE1 /* CheckboxComponent.swift in Sources */,
+				D0D892FC281E30B6002DE09F /* Constants.swift in Sources */,
+				D0D892F9281E22F3002DE09F /* SavedPayment+CoreDataClass.swift in Sources */,
 				D02572D52818C0B7004F1C1B /* Fonts.swift in Sources */,
 				D02D2EA4281B716900BBABE1 /* CameraComponent.swift in Sources */,
 				D0AED3E1281D05BB00D90634 /* SlideView.swift in Sources */,
+				D0D892FA281E22F3002DE09F /* SavedPayment+CoreDataProperties.swift in Sources */,
 				D02572BF28187149004F1C1B /* TipSectionHeaderView.swift in Sources */,
-				D0981411281B8D130003AC6C /* TipContainer.xcdatamodeld in Sources */,
 				D07560092819FCF700DC0037 /* Numbers.swift in Sources */,
 				D0AED3DD281CF86900D90634 /* PaymentListViewModel.swift in Sources */,
 				D0A916F0281B97C0005A92E9 /* DatabaseManager.swift in Sources */,
+				D0D892F6281E22B0002DE09F /* TipJarContainer.xcdatamodeld in Sources */,
 				D0E6FFA92819D8FD0071951D /* TextfieldComponent.swift in Sources */,
 				6C51DC1A27B6176F00E54296 /* TipJarApp.swift in Sources */,
 				D0647CF82818F07D009D2BD0 /* PaymentsListHeaderView.swift in Sources */,
@@ -793,13 +805,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D098140F281B8D130003AC6C /* TipContainer.xcdatamodeld */ = {
+		D0D892F4281E22B0002DE09F /* TipJarContainer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				D0981410281B8D130003AC6C /* TipContainer.xcdatamodel */,
+				D0D892F5281E22B0002DE09F /* TipJarContainer.xcdatamodel */,
 			);
-			currentVersion = D0981410281B8D130003AC6C /* TipContainer.xcdatamodel */;
-			path = TipContainer.xcdatamodeld;
+			currentVersion = D0D892F5281E22B0002DE09F /* TipJarContainer.xcdatamodel */;
+			path = TipJarContainer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

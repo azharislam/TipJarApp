@@ -15,7 +15,7 @@ final class TipSectionViewModel: ObservableObject {
     
     @Published var showPaymentsView: Bool? = false
     @Published var isKeyboardEnabled: Bool = false
-    @Published var savedPayments: [SavedPayments] = []
+    @Published var savedPayments: [SavedPayment] = []
     @Published var image: UIImage?
     @Published var peopleCount: Int = 1
     @Published var totalTip: Double = 0.0
@@ -41,12 +41,24 @@ final class TipSectionViewModel: ObservableObject {
     
 }
 
-// MARK: - Public Variables
+// MARK: - Validator Variables
 
 extension TipSectionViewModel {
     
+    var peopleCountDouble: Double {
+        Double(peopleCount)
+    }
+    
     var moreThanOnePerson: Bool {
         peopleCount > 1
+    }
+    
+    var amountString: String {
+        amount.toString()
+    }
+    
+    var totalTipString: String {
+        totalTip.toString()
     }
 }
 
@@ -59,16 +71,16 @@ extension TipSectionViewModel {
             .sink { [weak self] enteredAmount in
                 guard let self = self else { return }
                 self.totalTip = self.amount * self.tipPercentage
-                self.perPersonAmount = self.totalTip / Double(self.peopleCount)
+                self.perPersonAmount = self.totalTip / self.peopleCountDouble
             }
             .store(in: &cancellables)
     }
     
-    func addPayment(totalAmount: Double, totalTip: Double, image: String = "") {
-        let newPayment = SavedPayments(context: manager.context)
+    func addPayment(totalAmount: String, totalTip: String, image: String = "") {
+        let newPayment = SavedPayment(context: manager.context)
         newPayment.id = UUID()
         newPayment.savedDate = Date()
-        newPayment.totalAmount = totalAmount
+        newPayment.savedAmount = totalAmount
         newPayment.totalTip = totalTip
         newPayment.savedImage = image
         saveData()
@@ -85,14 +97,15 @@ extension TipSectionViewModel {
                     print("Error saving image")
                 }
             }
-            self.addPayment(totalAmount: self.amount, totalTip: self.totalTip, image: ImageFileManager.imageName)
+            self.addPayment(totalAmount: self.amountString, totalTip: self.totalTipString, image: ImageFileManager.imageName)
             self.showPaymentsView = true
+            self.enteredAmount = Constants.App.emptyString
         }
         .store(in: &cancellables)
     }
     
     private func getPayments() {
-        let request = NSFetchRequest<SavedPayments>(entityName: "SavedPayments")
+        let request = NSFetchRequest<SavedPayment>(entityName: "SavedPayment")
         
         do {
             savedPayments = try manager.context.fetch(request)

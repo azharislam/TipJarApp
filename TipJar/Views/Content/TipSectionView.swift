@@ -72,14 +72,14 @@ struct TipSectionView: View, KeyboardReadable {
     @ViewBuilder
     private var amountField: some View {
         VStack(alignment: .leading) {
-            Text("Enter amount")
+            Text(Constants.TipSection.amountTextView)
                 .font(Font.Roboto.medium(size: 16))
             TextfieldComponent {
-                TextField("100.00", text: $viewModel.enteredAmount)
+                TextField(Constants.TipSection.amountPlaceholder, text: $viewModel.enteredAmount)
                     .keyboardType(.decimalPad)
                     .frame(height: 80)
                     .overlay(alignment: .leading) {
-                        Text("$")
+                        Text(Constants.Symbols.dollar)
                             .font(Font.Roboto.medium(size: 24))
                             .padding(.leading, 20)
                     }
@@ -95,7 +95,7 @@ struct TipSectionView: View, KeyboardReadable {
     @ViewBuilder
     private var peopleCount: some View {
         VStack(alignment: .leading) {
-            Text("How many people?")
+            Text(Constants.TipSection.peopleTextView)
                 .font(Font.Roboto.medium(size: 16))
             HStack {
                 Button(action: {
@@ -143,18 +143,18 @@ struct TipSectionView: View, KeyboardReadable {
     @ViewBuilder
     private var tipField: some View {
         VStack(alignment: .leading) {
-            Text("% TIP")
+            Text(Constants.TipSection.tipTextView)
                 .font(Font.Roboto.medium(size: 16))
             TextfieldComponent {
-                TextField("", text: $textField)
+                TextField(Constants.App.emptyString, text: $textField)
                     .disabled(true)
                     .frame(height: 80)
                     .overlay(alignment: .center, content: {
-                        Text("10")
+                        Text(Constants.TipSection.tipTextfield)
                             .font(Font.Roboto.medium(size: 42))
                     })
                     .overlay(alignment: .trailing) {
-                        Text("%")
+                        Text(Constants.Symbols.percentage)
                             .font(Font.Roboto.medium(size: 24))
                             .padding(.trailing, 10)
                     }
@@ -170,7 +170,7 @@ struct TipSectionView: View, KeyboardReadable {
     private var summarySection: some View {
         VStack(spacing: 16) {
             HStack {
-                Text("Total Tip")
+                Text(Constants.TipSection.tipSummary)
                     .font(Font.Roboto.medium(size: 16))
                 Spacer()
                 Text(viewModel.totalTip, format: .currency(code: Locale.current.currencyCode ?? currency))
@@ -178,7 +178,7 @@ struct TipSectionView: View, KeyboardReadable {
             }
             
             HStack {
-                Text("Per Person")
+                Text(Constants.TipSection.peopleSummary)
                     .font(Font.Roboto.medium(size: 24))
                 Spacer()
                 Text(viewModel.perPersonAmount, format: .currency(code: Locale.current.currencyCode ?? currency))
@@ -201,7 +201,7 @@ struct TipSectionView: View, KeyboardReadable {
             .buttonStyle(CheckboxComponent(isSelected: isCheckSelected))
             .background(.clear)
             
-            Text("Take a photo of receipt")
+            Text(Constants.TipSection.checkboxTextView)
                 .font(Font.Roboto.medium(size: 16))
                 .padding(.leading, 5)
             
@@ -219,13 +219,13 @@ struct TipSectionView: View, KeyboardReadable {
                     isCameraEnabled = true
                 } else {
                     guard !viewModel.enteredAmount.isEmpty else { return }
-                    viewModel.addPayment(totalAmount: viewModel.amount, totalTip: viewModel.totalTip, image: "")
+                    viewModel.addPayment(totalAmount: viewModel.amountString, totalTip: viewModel.totalTipString)
                     viewModel.showPaymentsView = true
-                    viewModel.enteredAmount = ""
+                    viewModel.enteredAmount = Constants.App.emptyString
                     // Add some nice graphic to show successful save
                 }
             }) {
-                Text("Save payment")
+                Text(Constants.TipSection.saveButtonText)
                     .font(Font.Roboto.bold(size: 16))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
@@ -254,7 +254,7 @@ struct TipSectionView: View, KeyboardReadable {
     private var keyboardView: some View {
         if viewModel.isKeyboardEnabled {
             VStack(spacing: .zero) {
-                KeyboardComponent(actionTitle: "Done") {
+                KeyboardComponent(actionTitle: Constants.App.done) {
                     print("Keyboard is visible")
                 }
             }

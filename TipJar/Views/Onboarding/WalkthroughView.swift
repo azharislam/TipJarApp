@@ -12,23 +12,23 @@ import SwiftUI
 
 struct WalkthroughView: View {
     
-    @AppStorage("currentPage") var currentPage = 1
+    @AppStorage(Constants.App.currentPage) var currentPage = 1
     
     var body: some View {
         
         ZStack {
             if currentPage == 1 {
-                SlideView(image: "tipJar", title: "Welcome!", detail: "Are you a generous soul that loves to tip after a nice meal out? \n Why not start saving your tips in one place?", bgColor: Color.white)
+                SlideView(image: Constants.Onboarding.firstSlideImage, title: Constants.Onboarding.firstSlideTitle, detail: Constants.Onboarding.firstSlideDetail, bgColor: Color.white)
                     .transition(.scale)
             }
             
             if currentPage == 2 {
-                SlideView(image: "camera", title: "Snap a receipt!", detail: "Don't like stashing old receipt papers? Take a photo using our camera and keep it saved forever!", bgColor: Color.white)
+                SlideView(image: Constants.Onboarding.secondSlideImage, title: Constants.Onboarding.secondSlideTitle, detail: Constants.Onboarding.secondSlideDetail, bgColor: Color.white)
                     .transition(.scale)
             }
             
             if currentPage == 3 {
-                SlideView(image: "spending", title: "Keep track!", detail: "TipJar will help you keep track of your payments and help you manage your finances better. Save your first tip now!", bgColor: Color.white)
+                SlideView(image: Constants.Onboarding.thirdSlideImage, title: Constants.Onboarding.thirdSlideTitle, detail: Constants.Onboarding.secondSlideDetail, bgColor: Color.white)
                     .transition(.scale)
             }
         }
@@ -48,7 +48,7 @@ struct WalkthroughView: View {
                 }
             }
                    , label: {
-                       Image(systemName: "chevron.right")
+                       Image(systemName: Constants.Symbols.chevronRight)
                            .font(.system(size: 20, weight: .semibold))
                            .foregroundColor(.white)
                            .frame(width: 40, height: 60)
