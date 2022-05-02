@@ -9,6 +9,10 @@ import Foundation
 import CoreData
 
 /// Core Data abstraction
+///
+enum StorageType {
+    case persistent, inMemory
+}
 
 final class CoreDataStoreManager {
     
@@ -17,8 +21,14 @@ final class CoreDataStoreManager {
     let container: NSPersistentContainer
     let context: NSManagedObjectContext
     
-    init() {
+    init(_ storageType: StorageType = .persistent) {
         container = NSPersistentContainer(name: Constants.DataModel.container)
+        
+        if storageType == .inMemory {
+            let description = NSPersistentStoreDescription()
+            description.url = URL(fileURLWithPath: "/dev/null")
+            self.container.persistentStoreDescriptions = [description]
+        }
         
         container.loadPersistentStores { storeDescription, error in
             if let error = error {
