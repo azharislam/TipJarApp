@@ -80,6 +80,41 @@ extension TipSectionViewModel {
             .store(in: &cancellables)
     }
     
+    func validateUserInput(string: String) -> String {
+        var userInput: String
+        
+        let groups = string.components(separatedBy: ".")
+        if groups.count > 1 {
+            userInput = groups[0] + "." + groups.dropFirst().joined()
+        } else {
+            userInput = string
+        }
+        
+        userInput = userInput.filter { $0.isNumber || $0 == "." }
+        
+        if userInput.first == "." {
+            userInput.removeFirst()
+        }
+        
+        if userInput.first == "0" {
+            var stringIndicesToRemove = [String.Index]()
+            for index in 1..<userInput.count {
+                let stringIndex = userInput.index(userInput.startIndex, offsetBy: index)
+                if userInput[stringIndex] == "." {
+                    break
+                }
+                
+                stringIndicesToRemove.append(stringIndex)
+            }
+            
+            for stringIndexToRemove in stringIndicesToRemove.reversed() {
+                userInput.remove(at: stringIndexToRemove)
+            }
+        }
+        
+        return userInput
+    }
+    
     func getPayments() {
         let request = NSFetchRequest<SavedPayment>(entityName: Constants.DataModel.entity)
         

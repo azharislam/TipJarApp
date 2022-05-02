@@ -82,6 +82,7 @@ struct TipSectionView: View, KeyboardReadable {
                             .padding(.leading, 20)
                     }
                     .onChange(of: viewModel.enteredAmount) { newValue in
+                        viewModel.enteredAmount = viewModel.validateUserInput(string: newValue)
                         viewModel.calculateTip()
                     }
             }

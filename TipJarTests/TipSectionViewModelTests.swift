@@ -86,6 +86,42 @@ class TipSectionViewModelTests: XCTestCase {
     
     // MARK: - Test Calculation Function
     
+    func test_validateInvalidDecimal_success() {
+        viewModel.enteredAmount = "200.50.50.40"
+        let newAmount = viewModel.validateUserInput(string: viewModel.enteredAmount)
+        XCTAssertEqual(newAmount, "200.505040")
+    }
+    
+    func test_validateInvalidDecimal_failure() {
+        viewModel.enteredAmount = "200.50.50.40"
+        let newAmount = viewModel.validateUserInput(string: viewModel.enteredAmount)
+        XCTAssertNotEqual(newAmount, "200.50.50.40")
+    }
+    
+    func test_validateInvalidCharacters_success() {
+        viewModel.enteredAmount = "Invalid characters"
+        let newAmount = viewModel.validateUserInput(string: viewModel.enteredAmount)
+        XCTAssertEqual(newAmount, "")
+    }
+    
+    func test_validateInvalidCharacters_failure() {
+        viewModel.enteredAmount = "Invalid characters"
+        let newAmount = viewModel.validateUserInput(string: viewModel.enteredAmount)
+        XCTAssertNotEqual(newAmount, "Invalid characters")
+    }
+    
+    func test_validateInvalidFirstCharacter_success() {
+        viewModel.enteredAmount = "!40.50"
+        let newAmount = viewModel.validateUserInput(string: viewModel.enteredAmount)
+        XCTAssertEqual(newAmount, "40.50")
+    }
+    
+    func test_validateInvalidFirstCharacter_failure() {
+        viewModel.enteredAmount = "!40.50"
+        let newAmount = viewModel.validateUserInput(string: viewModel.enteredAmount)
+        XCTAssertNotEqual(newAmount, "!40.50")
+    }
+    
     func test_calculateAmount_success() {
         viewModel.enteredAmount = "200"
         viewModel.calculateTip()
