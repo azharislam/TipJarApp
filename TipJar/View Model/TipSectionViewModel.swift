@@ -27,7 +27,7 @@ final class TipSectionViewModel: ObservableObject {
         }
     }
     
-    private let manager = DatabaseManager.instance
+    private let manager = CoreDataStoreManager.instance
     private var cancellables = Set<AnyCancellable>()
     private let defaultValue: Double = 100.00
     let tipPercentage: Double = 10.0/100.0
@@ -95,12 +95,12 @@ extension TipSectionViewModel {
             guard let self = self else { return }
             guard let image = image else { return }
             let imageUuid = UUID().uuidString
-            ImageFileManager.saveImage(imageUuid, image: image) { error in
+            ImageStoreManager.saveImage(imageUuid, image: image) { error in
                 if error != nil {
                     print("Error saving image")
                 }
             }
-            self.addPayment(totalAmount: self.amountString, totalTip: self.totalTipString, image: ImageFileManager.imageName)
+            self.addPayment(totalAmount: self.amountString, totalTip: self.totalTipString, image: ImageStoreManager.imageName)
             self.showPaymentsView = true
             self.enteredAmount = Constants.App.emptyString
         }

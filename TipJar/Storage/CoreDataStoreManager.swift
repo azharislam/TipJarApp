@@ -10,9 +10,9 @@ import CoreData
 
 /// Core Data abstraction
 
-final class DatabaseManager {
+final class CoreDataStoreManager {
     
-    static let instance = DatabaseManager()
+    static let instance = CoreDataStoreManager()
     
     let container: NSPersistentContainer
     let context: NSManagedObjectContext

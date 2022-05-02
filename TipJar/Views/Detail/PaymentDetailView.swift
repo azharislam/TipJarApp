@@ -14,7 +14,7 @@ struct PaymentDetailView: View {
     var body: some View {
         
         VStack(spacing: 12) {
-            Image(uiImage: (ImageFileManager.fetchImage(savedPayment.image ) ?? UIImage(named: Constants.App.placeholder)) ?? UIImage())
+            Image(uiImage: (ImageStoreManager.fetchImage(savedPayment.image ) ?? UIImage(named: Constants.App.placeholder)) ?? UIImage())
                 .resizable()
                 .scaledToFit()
                 .frame(height: 399)
@@ -49,6 +49,6 @@ struct PaymentDetailView: View {
 
 struct PaymentDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentDetailView(savedPayment: SavedPayment(context: DatabaseManager.instance.context))
+        PaymentDetailView(savedPayment: SavedPayment(context: CoreDataStoreManager.instance.context))
     }
 }

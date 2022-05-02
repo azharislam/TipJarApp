@@ -12,7 +12,7 @@ struct TipJarApp: App {
     var body: some Scene {
         WindowGroup {
             OnboardingView()
-                .environment(\.managedObjectContext, DatabaseManager.instance.container.viewContext)
+                .environment(\.managedObjectContext, CoreDataStoreManager.instance.container.viewContext)
         }
     }
 }

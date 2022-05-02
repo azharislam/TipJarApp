@@ -29,7 +29,7 @@ struct SavedPaymentView: View {
                     .padding(.leading, 20)
                     .padding(.bottom, 3)
                 Spacer()
-                Image(uiImage: (ImageFileManager.fetchImage(savedImage) ?? UIImage(named: Constants.App.placeholder)) ?? UIImage())
+                Image(uiImage: (ImageStoreManager.fetchImage(savedImage) ?? UIImage(named: Constants.App.placeholder)) ?? UIImage())
                     .resizable()
                     .scaledToFill()
                     .frame(width: 53.0, height: 53.0)

@@ -11,7 +11,7 @@ import XCTest
 class TipSectionViewModelTests: XCTestCase {
 
     private let viewModel = TipSectionViewModel()
-    private let database = DatabaseManager.instance
+    private let database = CoreDataStoreManager.instance
     
     // MARK: - Test Variables
     

@@ -9,7 +9,7 @@ import UIKit
 
 /// FileManager abstraction to save/retrieve images from user directory
 
-class ImageFileManager {
+class ImageStoreManager {
     
     static var imageName: String = ""
     
