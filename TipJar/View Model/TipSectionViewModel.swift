@@ -21,19 +21,20 @@ final class TipSectionViewModel: ObservableObject {
     @Published var totalTip: Double = 0.0
     @Published var perPersonAmount: Double = 0.0
     @Published var amount: Double = 0.0
-    @Published var enteredAmount: String = "" {
+    @Published var enteredAmount: String = Constants.App.emptyString {
         didSet {
             amount = (enteredAmount.isEmpty ? defaultValue : Double(enteredAmount)) ?? 0.0
         }
     }
     
-    private let manager = CoreDataStoreManager.instance
+    private let storage: CoreDataStoreManager
     private var cancellables = Set<AnyCancellable>()
     private let defaultValue: Double = 100.00
     let tipPercentage: Double = 10.0/100.0
     var savedPayment: SavedPayment?
     
-    init() {
+    init(storage: CoreDataStoreManager) {
+        self.storage = storage
         getPayments()
         savePayment()
     }
@@ -52,15 +53,15 @@ extension TipSectionViewModel {
         peopleCount > 1
     }
     
-    var amountString: String {
+    var amountInDollar: String {
         amount.toDollarString()
     }
     
-    var totalTipString: String {
+    var totalTipInDollar: String {
         totalTip.toDollarString()
     }
     
-    var perPersonAmountString: String {
+    var perPersonInDollar: String {
         perPersonAmount.toDollarString()
     }
 }
@@ -79,15 +80,24 @@ extension TipSectionViewModel {
             .store(in: &cancellables)
     }
     
-    func addPayment(totalAmount: String, totalTip: String, image: String = "") {
-        let newPayment = SavedPayment(context: manager.context)
+    func getPayments() {
+        let request = NSFetchRequest<SavedPayment>(entityName: Constants.DataModel.entity)
+        
+        do {
+            savedPayments = try storage.context.fetch(request)
+        } catch let error {
+            print("Error fetching data. \(error.localizedDescription)") // Add some error alert views
+        }
+    }
+    
+    func addPayment(totalAmount: String, totalTip: String, image: String = Constants.App.emptyString) {
+        let newPayment = SavedPayment(context: storage.context)
         newPayment.id = UUID()
         newPayment.savedDate = Date()
         newPayment.savedAmount = totalAmount
         newPayment.totalTip = totalTip
         newPayment.savedImage = image
         saveData()
-        print("\(savedPayments.count)")
     }
     
     private func savePayment() {
@@ -97,27 +107,17 @@ extension TipSectionViewModel {
             let imageUuid = UUID().uuidString
             ImageStoreManager.saveImage(imageUuid, image: image) { error in
                 if error != nil {
-                    print("Error saving image")
+                    print("Error saving image") // Add some error alert views
                 }
             }
-            self.addPayment(totalAmount: self.amountString, totalTip: self.totalTipString, image: ImageStoreManager.imageName)
+            self.addPayment(totalAmount: self.amountInDollar, totalTip: self.totalTipInDollar, image: ImageStoreManager.imageName)
             self.showPaymentsView = true
             self.enteredAmount = Constants.App.emptyString
         }
         .store(in: &cancellables)
     }
     
-    private func getPayments() {
-        let request = NSFetchRequest<SavedPayment>(entityName: "SavedPayment")
-        
-        do {
-            savedPayments = try manager.context.fetch(request)
-        } catch let error {
-            print("Error fetching data. \(error.localizedDescription)")
-        }
-    }
-    
     private func saveData() {
-        manager.saveData()
+        storage.saveData()
     }
 }

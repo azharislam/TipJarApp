@@ -36,7 +36,6 @@ struct SavedPaymentView: View {
                     .cornerRadius(12)
                     .overlay(RoundedRectangle(cornerRadius: 12)
                         .stroke(Color.gray, lineWidth: 0.2))
-                    .padding(.bottom, 5)
             }
         }
         .padding()

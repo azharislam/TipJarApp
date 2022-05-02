@@ -8,30 +8,33 @@
 import SwiftUI
 
 struct PaymentDetailView: View {
-
+    
     var savedPayment: SavedPayment
-
+    
     var body: some View {
         
         VStack(spacing: 12) {
-            Image(uiImage: (ImageStoreManager.fetchImage(savedPayment.image ) ?? UIImage(named: Constants.App.placeholder)) ?? UIImage())
-                .resizable()
-                .scaledToFit()
-                .frame(height: 399)
-                .background(.white)
-                .cornerRadius(12)
-                .overlay(RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.gray, lineWidth: 0.3))
-
+            
+            if savedPayment.image != Constants.App.emptyString {
+                Image(uiImage: (ImageStoreManager.fetchImage(savedPayment.image) ?? UIImage()))
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 400)
+                    .background(.white)
+                    .cornerRadius(12)
+                    .overlay(RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.gray, lineWidth: 0.3))
+            }
+            
             VStack(alignment: .leading, spacing: 12) {
                 Text(savedPayment.date )
                     .font(Font.Roboto.medium(size: 16))
                 HStack {
                     Text(savedPayment.totalAmount )
                         .font(Font.Roboto.medium(size: 24))
-
+                    
                     Spacer()
-                    Text("Tip: \(savedPayment.tipTotal )")
+                    Text("\(Constants.PaymentDetail.tip)\(savedPayment.tipTotal )")
                         .font(Font.Roboto.medium(size: 16))
                         .foregroundColor(Color.tipGray)
                 }
@@ -43,7 +46,7 @@ struct PaymentDetailView: View {
                 .stroke(Color.gray, lineWidth: 0.3))
             .padding(.bottom, 5)
         }
-        .padding(.horizontal, 38)
+        .padding(.horizontal, 40)
     }
 }
 

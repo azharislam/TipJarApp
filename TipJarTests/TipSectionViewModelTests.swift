@@ -10,13 +10,22 @@ import XCTest
 
 class TipSectionViewModelTests: XCTestCase {
 
-    private let viewModel = TipSectionViewModel()
-    private let database = CoreDataStoreManager.instance
+    private var viewModel: TipSectionViewModel!
+    private var storage: CoreDataStoreManager!
+    
+    override func setUp() {
+        storage = CoreDataStoreManager(.inMemory)
+        viewModel = TipSectionViewModel(storage: storage)
+    }
     
     // MARK: - Test Variables
     
-    func test_tipPercentage_isTenPercent() {
+    func test_tipPercentage_isTenPercent_success() {
         XCTAssertEqual(viewModel.tipPercentage, 0.1)
+    }
+    
+    func test_tipPercentage_isTenPercent_failure() {
+        XCTAssertNotEqual(viewModel.tipPercentage, 10)
     }
 
     func test_moreThanOne_success() {
@@ -24,7 +33,7 @@ class TipSectionViewModelTests: XCTestCase {
         XCTAssertTrue(viewModel.moreThanOnePerson)
     }
     
-    func test_moreThanOne_fail() {
+    func test_moreThanOne_failure() {
         viewModel.peopleCount = 0
         XCTAssertFalse(viewModel.moreThanOnePerson)
     }
@@ -34,71 +43,116 @@ class TipSectionViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.peopleCountDouble, 1.0)
     }
     
-    func test_amountIsCurrency_success() {
+    func test_peopleCountIsDouble_failure() {
+        viewModel.peopleCount = 1
+        XCTAssertNotEqual(viewModel.peopleCountDouble, 2.0)
+    }
+    
+    func test_doubleToCurrency_success() {
         viewModel.amount = 2.50
-        XCTAssertEqual(viewModel.amountString, "$2.50")
-    }
-    
-    func test_totalTipIsCurrency_success() {
         viewModel.totalTip = 2.50
-        XCTAssertEqual(viewModel.totalTipString, "$2.50")
+        viewModel.perPersonAmount = 2.50
+        XCTAssertEqual(viewModel.amountInDollar, "$2.50")
+        XCTAssertEqual(viewModel.totalTipInDollar, "$2.50")
+        XCTAssertEqual(viewModel.perPersonInDollar, "$2.50")
     }
     
-    func test_perPersonIsCurrency_success() {
+    func test_doubleToCurrency_failure() {
+        viewModel.amount = 2.50
+        viewModel.totalTip = 2.50
         viewModel.perPersonAmount = 2.50
-        XCTAssertEqual(viewModel.perPersonAmountString, "$2.50")
+        XCTAssertNotEqual(viewModel.amountInDollar, "2.50")
+        XCTAssertNotEqual(viewModel.totalTipInDollar, "2.50")
+        XCTAssertNotEqual(viewModel.perPersonInDollar, "2.50")
+    }
+    
+    func test_isRoundedCurrency_success() {
+        viewModel.amount = 300.496
+        viewModel.totalTip = 30.443
+        viewModel.perPersonAmount = 10.45
+        XCTAssertEqual(viewModel.amountInDollar, "$300.50")
+        XCTAssertEqual(viewModel.totalTipInDollar, "$30.44")
+        XCTAssertEqual(viewModel.perPersonInDollar, "$10.45")
+    }
+    
+    func test_isAssignedCurrency_failure() {
+        viewModel.amount = 300.496
+        viewModel.totalTip = 30.443
+        viewModel.perPersonAmount = 10.45
+        XCTAssertNotEqual(viewModel.amountInDollar, "$300.49")
+        XCTAssertNotEqual(viewModel.totalTipInDollar, "$30.45")
+        XCTAssertNotEqual(viewModel.perPersonInDollar, "$10.46")
     }
     
     // MARK: - Test Calculation Function
     
     func test_calculateAmount_success() {
-        viewModel.enteredAmount = "100"
-        viewModel.calculateTip()
-        XCTAssertEqual(viewModel.amount, 100.0)
-    }
-    
-    func test_calculateTipAmount_success() {
-        viewModel.enteredAmount = "100"
-        viewModel.calculateTip()
-        XCTAssertEqual(viewModel.totalTip, 10.0)
-    }
-    
-    func test_calculatePerPersonAmount_success() {
         viewModel.enteredAmount = "200"
         viewModel.calculateTip()
+        XCTAssertEqual(viewModel.amount, 200.0)
+        XCTAssertEqual(viewModel.totalTip, 20.0)
         XCTAssertEqual(viewModel.perPersonAmount, 20.0)
+        XCTAssertNotNil(viewModel.amountInDollar)
+    }
+    
+    func test_calculateAmount_failure() {
+        viewModel.enteredAmount = "100"
+        viewModel.calculateTip()
+        XCTAssertNotEqual(viewModel.amount, 200.0)
+        XCTAssertNotEqual(viewModel.totalTip, 20.0)
+        XCTAssertNotEqual(viewModel.perPersonAmount, 20.0)
     }
     
     func test_calculatePeopleCountAmountChanged_success() {
         viewModel.enteredAmount = "200"
         viewModel.peopleCount = 2
         viewModel.calculateTip()
+        XCTAssertEqual(viewModel.amount, 200.0)
         XCTAssertEqual(viewModel.perPersonAmount, 10.0)
+        XCTAssertEqual(viewModel.totalTip, 20.0)
+    }
+    
+    func test_calculatePeopleCountAmountChanged_failure() {
+        viewModel.enteredAmount = "200"
+        viewModel.peopleCount = 2
+        viewModel.calculateTip()
+        XCTAssertNotEqual(viewModel.amount, 300.0)
+        XCTAssertNotEqual(viewModel.perPersonAmount, 20.0)
+        XCTAssertNotEqual(viewModel.totalTip, 10.0)
     }
     
     func test_calculateAmountCurrency_success() {
         viewModel.enteredAmount = "200"
         viewModel.calculateTip()
-        XCTAssertEqual(viewModel.amountString, "$200.00")
+        XCTAssertEqual(viewModel.amountInDollar, "$200.00")
+        XCTAssertEqual(viewModel.totalTipInDollar, "$20.00")
+        XCTAssertEqual(viewModel.perPersonInDollar, "$20.00")
     }
     
-    func test_calculateTipAmountCurrency_success() {
+    func test_calculateAmountCurrency_failure() {
         viewModel.enteredAmount = "200"
         viewModel.calculateTip()
-        XCTAssertEqual(viewModel.totalTipString, "$20.00")
+        XCTAssertNotEqual(viewModel.amountInDollar, "£200.00")
+        XCTAssertNotEqual(viewModel.totalTipInDollar, "€20.00")
+        XCTAssertNotEqual(viewModel.perPersonInDollar, "£20.00")
     }
     
-    func test_calculatePeopleCountAmountCurrency_success() {
-        viewModel.enteredAmount = "200"
-        viewModel.calculateTip()
-        XCTAssertEqual(viewModel.perPersonAmountString, "$20.00")
-    }
-    
-    func test_calculatePopleCountAmountChangedCurrency_success() {
+    func test_calculatePeopleCountChangedCurrency_success() {
         viewModel.enteredAmount = "200"
         viewModel.peopleCount = 2
         viewModel.calculateTip()
-        XCTAssertEqual(viewModel.perPersonAmountString, "$10.00")
+        XCTAssertEqual(viewModel.amountInDollar, "$200.00")
+        XCTAssertEqual(viewModel.totalTipInDollar, "$20.00")
+        XCTAssertEqual(viewModel.perPersonInDollar, "$10.00")
+    }
+    
+    func test_calculatePeopleCountChangedCurrency_failure() {
+        viewModel.enteredAmount = "200"
+        viewModel.peopleCount = 2
+        viewModel.calculateTip()
+        XCTAssertNotEqual(viewModel.amountInDollar, "£200.00")
+        XCTAssertNotEqual(viewModel.totalTipInDollar, "£20.00")
+        XCTAssertNotEqual(viewModel.perPersonInDollar, "£10.00")
     }
     
     func test_calculateAmountEmpty_success() {
@@ -127,11 +181,11 @@ class TipSectionViewModelTests: XCTestCase {
     func test_calculateAmountEmpty_defaultFail() {
         viewModel.enteredAmount = "0"
         viewModel.calculateTip()
-        XCTAssertEqual(viewModel.amount, 0)
+        XCTAssertNotEqual(viewModel.amount, 100)
         XCTAssertTrue(viewModel.amount.isZero)
-        XCTAssertEqual(viewModel.totalTip, 0)
+        XCTAssertNotEqual(viewModel.totalTip, 10)
         XCTAssertTrue(viewModel.totalTip.isZero)
-        XCTAssertEqual(viewModel.perPersonAmount, 0)
+        XCTAssertNotEqual(viewModel.perPersonAmount, 10)
         XCTAssertTrue(viewModel.perPersonAmount.isZero)
     }
 }

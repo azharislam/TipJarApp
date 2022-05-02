@@ -7,11 +7,11 @@
 
 import UIKit
 
-/// FileManager abstraction to save/retrieve images from user directory
+/// FileManager to save/retrieve images from user directory
 
 class ImageStoreManager {
     
-    static var imageName: String = ""
+    static var imageName: String = Constants.App.emptyString
     
     static func applicationSupportURL() -> URL? {
         let fileManager = FileManager.default

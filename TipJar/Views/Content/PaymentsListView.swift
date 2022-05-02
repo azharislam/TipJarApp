@@ -12,7 +12,7 @@ struct PaymentsListView: View {
     // MARK: - Variables
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject private var viewModel = TipSectionViewModel()
+    @ObservedObject private var viewModel = TipSectionViewModel(storage: CoreDataStoreManager())
     @State private var isSheetPresented: Bool = false
     
     // MARK: - Content View

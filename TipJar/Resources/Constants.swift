@@ -27,6 +27,7 @@ struct Constants {
     struct DataModel {
         static let container = "TipJarContainer"
         static let entity = "SavedPayment"
+        static let nullDirectory = "/dev/null"
     }
     
     struct Symbols {
@@ -65,5 +66,9 @@ struct Constants {
         static let navTitle = "Saved payments"
         static let emptyTitle = "No Saved Payments"
         static let emptyDescription = "It seems you haven't saved any payments! \n When you do they will show up here."
+    }
+    
+    struct PaymentDetail {
+        static let tip = "Tip: "
     }
 }

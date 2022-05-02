@@ -11,10 +11,8 @@ struct TipSectionView: View, KeyboardReadable {
     
     // MARK: - Variables
     
-    @StateObject private var viewModel = TipSectionViewModel()
-    
-    @State private var textField: String = ""
-    @State private var currency = "USD"
+    @StateObject private var viewModel = TipSectionViewModel(storage: CoreDataStoreManager())
+    @State private var textField: String = Constants.App.emptyString
     @State private var isCameraEnabled: Bool = false
     @State private var isCheckSelected: Bool = false
     
@@ -173,7 +171,7 @@ struct TipSectionView: View, KeyboardReadable {
                 Text(Constants.TipSection.tipSummary)
                     .font(Font.Roboto.medium(size: 16))
                 Spacer()
-                Text(viewModel.totalTipString)
+                Text(viewModel.totalTipInDollar)
                     .font(Font.Roboto.medium(size: 16))
             }
             
@@ -181,7 +179,7 @@ struct TipSectionView: View, KeyboardReadable {
                 Text(Constants.TipSection.peopleSummary)
                     .font(Font.Roboto.medium(size: 24))
                 Spacer()
-                Text(viewModel.perPersonAmountString)
+                Text(viewModel.perPersonInDollar)
                     .font(Font.Roboto.medium(size: 24))
             }
             
@@ -220,7 +218,7 @@ struct TipSectionView: View, KeyboardReadable {
                 if isCheckSelected {
                     isCameraEnabled = true
                 } else {
-                    viewModel.addPayment(totalAmount: viewModel.amountString, totalTip: viewModel.totalTipString)
+                    viewModel.addPayment(totalAmount: viewModel.amountInDollar, totalTip: viewModel.totalTipInDollar)
                     viewModel.showPaymentsView = true
                     viewModel.enteredAmount = Constants.App.emptyString
                     // Add some nice graphic to show successful save
@@ -246,7 +244,7 @@ struct TipSectionView: View, KeyboardReadable {
     
     @ViewBuilder
     private var cameraView: some View {
-        CameraComponent(isShowing: $isCameraEnabled, selectedImage: $viewModel.image)
+        CameraComponent(isEnabled: $isCameraEnabled, selectedImage: $viewModel.image)
     }
     
     // MARK: - Keyboard View
@@ -256,7 +254,7 @@ struct TipSectionView: View, KeyboardReadable {
         if viewModel.isKeyboardEnabled {
             VStack(spacing: .zero) {
                 KeyboardComponent(actionTitle: Constants.App.done) {
-                    print("Keyboard is visible")
+                    print("Keyboard component was enabled")
                 }
             }
             .animation(.default, value: viewModel.isKeyboardEnabled)

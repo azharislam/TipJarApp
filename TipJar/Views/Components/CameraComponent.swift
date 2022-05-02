@@ -12,7 +12,7 @@ import SwiftUI
 
 struct CameraComponent: UIViewControllerRepresentable {
     
-    @Binding var isShowing: Bool
+    @Binding var isEnabled: Bool
     @Binding var selectedImage: UIImage?
     
     func makeUIViewController(context: Context) -> UIImagePickerController {
@@ -27,7 +27,7 @@ struct CameraComponent: UIViewControllerRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(isEnabled: $isShowing, camera: self)
+        return Coordinator(isEnabled: $isEnabled, camera: self)
     }
     
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
