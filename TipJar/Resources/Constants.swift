@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Custom string constants, separated by logic and view
 
 struct Constants {
     
@@ -40,6 +41,7 @@ struct Constants {
         static let chevronRight = "chevron.right"
         static let dollar = "$"
         static let percentage = "%"
+        static let dateFormat = "yyyy MMMM dd"
     }
     
     struct Onboarding {

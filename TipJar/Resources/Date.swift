@@ -17,7 +17,7 @@ extension DateFormatter {
         return formatter
     }
     
-    static let `default` = DateFormatter.formatString("yyyy MMM dd")
+    static let `default` = DateFormatter.formatString(Constants.Symbols.dateFormat)
 }
 
 extension Date {

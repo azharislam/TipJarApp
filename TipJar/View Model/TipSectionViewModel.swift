@@ -38,7 +38,6 @@ final class TipSectionViewModel: ObservableObject {
         getPayments()
         savePayment()
     }
-    
 }
 
 // MARK: - Validator Variables

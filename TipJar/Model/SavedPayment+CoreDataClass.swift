@@ -10,6 +10,4 @@ import Foundation
 import CoreData
 
 @objc(SavedPayment)
-public class SavedPayment: NSManagedObject {
-
-}
+public class SavedPayment: NSManagedObject {}

@@ -10,7 +10,7 @@ import Combine
 
 /// Keyboard helper that stops view from moving when keyboard is visible
 
-struct AdaptsToKeyboard: ViewModifier {
+private struct AdaptsToKeyboard: ViewModifier {
     @State var currentHeight: CGFloat = 0
     
     func body(content: Content) -> some View {

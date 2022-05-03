@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Add logic here that will handle string to decimal and currency logic
+/// Currency formatter
 
 extension Double {
     func toDollarString() -> String {
