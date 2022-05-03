@@ -20,7 +20,7 @@ git clone https://github.com/azharislam/FruitPedia.git
 
 - User input calculator 
 - Camera functionality
-- View saved data offline
+- View saved data locally/offline
 - Interactive onboarding process
 
 ## Documentation
