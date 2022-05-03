@@ -1,7 +1,7 @@
 # TipJar
 An app built using SwiftUI. The purpose of the app is that it is a tip calculator based on user input. Built as part of the technical test for Bitcoin.com.
 
-# Installation
+## Installation
 
 - Clone the project.
 
@@ -12,18 +12,18 @@ git clone https://github.com/azharislam/FruitPedia.git
 - No third party libraries were used in the development of this project.
 
 
-# Screenshots
+## Screenshots
 
 [![Simulator-Screen-Shot-i-Phone-13-2022-05-03-at-01-50-08.png](https://i.postimg.cc/DZGP2nV8/Simulator-Screen-Shot-i-Phone-13-2022-05-03-at-01-50-08.png)](https://postimg.cc/tZXxk04j)
 
-# Features
+## Features
 
 - User input calculator 
 - Camera functionality
 - View saved data offline
 - Interactive onboarding process
 
-# Documentation
+## Documentation
 
 The main view of the app ```TipSectionView``` was built using generic view builders. There was a lot of 
 components in the main view of the design which made me go with this procedure. I made some of the components in this view separetely to increase reusability. The components involve a custom keyboard,
@@ -40,11 +40,11 @@ Aside from the above, I added a custom launch screen and onboarding process to m
 
 The unit tests test the logic of the ```TipSectionViewModel```, ```ImageStoreManager```and ```CoreDataStoreManager```.
 
-# Evaluation
+## Evaluation
 
 Overall I enjoyed this test, it allowed me to use my SwiftUI and Combine skills which I have been brushing up on for the past year. If I had more time,
 I would implement extra UI features to enhance user experience, add UI tests to increase robustness and also add the 'select currency' feature.
 
-# Acknowledgements
+## Acknowledgements
 
 Thank you to the team at Bitcoin.com for providing the source test file and also the opportunity. I look forward to your feedback! 
