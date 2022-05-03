@@ -61,6 +61,7 @@ struct TipSectionView: View, KeyboardReadable {
             .frame(maxWidth: .infinity,
                    maxHeight: .infinity)
             .navigationBarHidden(true)
+            .alert(isPresented: $viewModel.isError) { errorView }
             .sheet(isPresented: $isCameraEnabled) { cameraView }
         }
     }
@@ -214,7 +215,7 @@ struct TipSectionView: View, KeyboardReadable {
     private var saveButton: some View {
         VStack {
             Button(action: {
-                guard !viewModel.enteredAmount.isEmpty else { return }
+                guard !viewModel.enteredAmount.isEmpty else { return viewModel.isError = true }
                 
                 if isCheckSelected {
                     isCameraEnabled = true
@@ -222,7 +223,6 @@ struct TipSectionView: View, KeyboardReadable {
                     viewModel.addPayment(totalAmount: viewModel.amountInDollar, totalTip: viewModel.totalTipInDollar)
                     viewModel.showPaymentsView = true
                     viewModel.enteredAmount = Constants.App.emptyString
-                    // Add some nice graphic to show successful save
                 }
             }) {
                 Text(Constants.TipSection.saveButtonText)
@@ -230,15 +230,20 @@ struct TipSectionView: View, KeyboardReadable {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .foregroundColor(.white)
-                    .background(Color.gradientOrange)
+                    .background(LinearGradient(gradient: Gradient(colors: [Color.gradientOrange, Color.gradientBrown]), startPoint: .top, endPoint: .bottom))
                     .cornerRadius(12)
                     .overlay(
-                        // Make this a custom re-usable component
                         RoundedRectangle(cornerRadius: 12)
                             .stroke(LinearGradient(gradient: Gradient(colors: [.white.opacity(0.1936), .black.opacity(0.198)]), startPoint: .top, endPoint: .bottom), lineWidth: 1)
                     )
             }
         }
+    }
+    
+    // MARK: - Error View
+    
+    private var errorView: Alert {
+        Alert(title: Text(Constants.AlertMessage.errorTitle), message: Text(Constants.AlertMessage.errorDesc))
     }
     
     // MARK: - Camera View
@@ -254,9 +259,7 @@ struct TipSectionView: View, KeyboardReadable {
     private var keyboardView: some View {
         if viewModel.isKeyboardEnabled {
             VStack(spacing: .zero) {
-                KeyboardComponent(actionTitle: Constants.App.done) {
-                    print("Keyboard component was enabled")
-                }
+                KeyboardComponent(actionTitle: Constants.App.done, onCompletion: {})
             }
             .animation(.default, value: viewModel.isKeyboardEnabled)
         }

@@ -10,8 +10,13 @@ import XCTest
 
 class ImageFileManagerTests: XCTestCase {
 
-    private var manager = ImageStoreManager()
-    private let viewModel = TipSectionViewModel(storage: CoreDataStoreManager(.inMemory))
+    private var manager: ImageStoreManager!
+    private var viewModel: TipSectionViewModel!
+    
+    override func setUp() {
+        manager = ImageStoreManager()
+        viewModel = TipSectionViewModel(storage: CoreDataStoreManager(.inMemory))
+    }
 
     func test_fetchImage_success() {
         viewModel.image = UIImage(named: "receipt")

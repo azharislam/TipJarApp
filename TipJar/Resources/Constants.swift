@@ -17,6 +17,11 @@ struct Constants {
         static let placeholder = "placeholder"
     }
     
+    struct AlertMessage {
+        static let errorTitle = "Oops"
+        static let errorDesc = "Error saving your payment. Make sure all fields are filled."
+    }
+    
     struct Payment {
         static let savedDate = "savedDate"
         static let amount = "amount"

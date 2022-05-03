@@ -18,5 +18,8 @@ extension Image {
     static let plus = Image("plus")
     static let logo = Image("tipJarLogo")
     static let receipt = Image("receipt")
+    static let tipJar = Image("tipJar")
+    static let camera = Image("camera")
+    static let spending = Image("spending")
 }
 

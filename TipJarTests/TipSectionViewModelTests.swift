@@ -84,7 +84,7 @@ class TipSectionViewModelTests: XCTestCase {
         XCTAssertNotEqual(viewModel.perPersonInDollar, "$10.46")
     }
     
-    // MARK: - Test Calculation Function
+    // MARK: - Test Functions
     
     func test_validateInvalidDecimal_success() {
         viewModel.enteredAmount = "200.50.50.40"

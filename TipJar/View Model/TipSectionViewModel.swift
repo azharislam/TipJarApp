@@ -12,7 +12,7 @@ import UIKit
 final class TipSectionViewModel: ObservableObject {
     
     // MARK: - Variables
-    
+    @Published var isError: Bool = false
     @Published var showPaymentsView: Bool? = false
     @Published var isKeyboardEnabled: Bool = false
     @Published var savedPayments: [SavedPayment] = []
@@ -142,7 +142,7 @@ extension TipSectionViewModel {
             let imageUuid = UUID().uuidString
             ImageStoreManager.saveImage(imageUuid, image: image) { error in
                 if error != nil {
-                    print("Error saving image") // Add some error alert views
+                    self.isError = true
                 }
             }
             self.addPayment(totalAmount: self.amountInDollar, totalTip: self.totalTipInDollar, image: ImageStoreManager.imageName)
