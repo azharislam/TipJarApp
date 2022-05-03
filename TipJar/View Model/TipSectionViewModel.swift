@@ -116,7 +116,8 @@ extension TipSectionViewModel {
     
     func getPayments() {
         let request = NSFetchRequest<SavedPayment>(entityName: Constants.DataModel.entity)
-        
+        let sort = NSSortDescriptor(key: "savedDate", ascending: false)
+        request.sortDescriptors = [sort]
         do {
             savedPayments = try storage.context.fetch(request)
         } catch let error {
