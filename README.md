@@ -6,7 +6,7 @@ An app built using SwiftUI. The purpose of the app is that it is a tip calculato
 - Clone the project.
 
 ```bash
-git clone https://github.com/azharislam/FruitPedia.git
+git clone https://github.com/azharislam/TipJarApp.git
 ```
 - Open the project in Xcode and run on simulator or device (iOS 15+)
 - No third party libraries were used in the development of this project.
